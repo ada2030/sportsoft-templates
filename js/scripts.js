@@ -16,15 +16,13 @@ var sam = new function() {
 
         this.init = function() {
             var hamburger = $('.js-hamburger'),
-                header = $('.js-header'),
-                menu = $('.js-menu'),
+                hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu');
 
             $(hamburger).click(function() {
-                $(hamburger).toggleClass('open');
-                $(header).toggleClass('open');
-                $(menu).toggleClass('open');
-                if ($(header).hasClass('open')) {
+                $(hamburgerOpen).toggleClass('open');
+                $(this).toggleClass('open');
+                if ($(this).hasClass('open')) {
                     $('body').css('overflow', 'hidden');
                 } else {
                     $('body').css('overflow', 'unset');

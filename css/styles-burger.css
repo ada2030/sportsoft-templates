@@ -242,12 +242,13 @@
         left: 0;
         z-index: 101;
         background-color: var(--light-blue);
+        height: calc(100vh - 20px);
+        overflow: scroll;
+        padding: 0 0 60px;
     }
 
     .menu.open {
         display: block;
-        height: calc(100vh - 80px);
-        overflow: scroll;
     }
 
     .menu__list {
@@ -458,10 +459,7 @@
 
     .menu {
         top: 70px;
-    }
-
-    .menu.open {
-        height: calc(100vh - 70px);
+        height: calc(100vh - 10px);
     }
 
     .menu__list {
