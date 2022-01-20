@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'),
+  url("/fonts/montserrat-regular.woff2") format("woff2"),
+  url("/fonts/montserrat-regular.woff") format("woff"),
+  url("/fonts/montserrat-regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Medium'), local('Montserrat-Medium'),
+  url("/fonts/montserrat-medium.woff2") format("woff2"),
+  url("/fonts/montserrat-medium.woff") format("woff"),
+  url("/fonts/montserrat-medium.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
+  url("/fonts/montserrat-semibold.woff2") format("woff2"),
+  url("/fonts/montserrat-semibold.woff") format("woff"),
+  url("/fonts/montserrat-semibold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Bold'), local('Montserrat-Bold'),
+  url("/fonts/montserrat-bold.woff2") format("woff2"),
+  url("/fonts/montserrat-bold.woff") format("woff"),
+  url("/fonts/montserrat-bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat Black'), local('Montserrat-Black'),
+  url("/fonts/montserrat-black.woff2") format("woff2"),
+  url("/fonts/montserrat-black.woff") format("woff"),
+  url("/fonts/montserrat-black.ttf") format("ttf");
+}
+
+/* Структура */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --black-opacity: 0, 0, 0;
+  --dark-gray: #484646;
+  --light-blue: #44a7de;
+}
+
+/* применение var(--color-blue); */
+
+.visually-hidden:not(:focus):not(active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+a,
+button {
+  text-decoration: none;
+  color: var(--dark-gray);
+  cursor: pointer;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
