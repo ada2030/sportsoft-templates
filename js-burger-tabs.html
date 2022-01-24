@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Шаблоны SportSoft</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styles-burger.css" rel="stylesheet">
+    <link href="css/styles-tabs.css" rel="stylesheet">
+</head>
+<body>
+<header class="header js-hamburger-open">
+    <div class="header__container container-x">
+        <a class="header__logo-link" href="#">
+            <svg class="header__logo" width="200" height="33">
+                <use xlink:href="img/sprite.svg#logo-header"></use>
+            </svg>
+        </a>
+        <nav class="menu js-hamburger-open">
+            <ul class="menu__list">
+                <li class="menu__item menu__item--active">
+                    <a class="menu__link" href="#">О нас</a>
+                </li>
+                <li class="menu__item menu__item--has-submenu js-has-submenu">
+                    <div class="menu__link">Услуги
+                        <svg class="menu__arrow" width="17" height="18">
+                            <use xlink:href="img/sprite.svg#arrow-menu"></use>
+                        </svg>
+                    </div>
+                    <ul class="menu__submenu js-submenu">
+                        <li class="menu__submenu-item">
+                            <a class="menu__submenu-link" href="#">Сайты</a>
+                        </li>
+                        <li class="menu__submenu-item">
+                            <a class="menu__submenu-link" href="#">Мобильная разработка</a>
+                        </li>
+                        <li class="menu__submenu-item">
+                            <a class="menu__submenu-link" href="#">Разработка систем управления соревнованиями</a>
+                        </li>
+                        <li class="menu__submenu-item">
+                            <a class="menu__submenu-link" href="#">Внедрение CRM</a>
+                        </li>
+                        <li class="menu__submenu-item">
+                            <a class="menu__submenu-link" href="#">Системы бронирования инфраструктуры</a>
+                        </li>
+                        <li class="menu__submenu-item">
+                            <a class="menu__submenu-link" href="#">Тех. поддержка</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu__item">
+                    <a class="menu__link" href="#">Проекты</a>
+                </li>
+                <li class="menu__item menu__item--has-submenu js-has-submenu">
+                    <a class="menu__link" href="#">Возможности
+                        <svg class="menu__arrow" width="17" height="18">
+                            <use xlink:href="img/sprite.svg#arrow-menu"></use>
+                        </svg>
+                    </a>
+                    <ul class="menu__submenu js-submenu">
+                        <li class="menu__submenu-item">
+                            <a class="menu__submenu-link" href="#">Автоматизация</a>
+                        </li>
+                        <li class="menu__submenu-item">
+                            <a class="menu__submenu-link" href="#">CRM</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu__item">
+                    <a class="menu__link" href="#">Блог</a>
+                </li>
+            </ul>
+        </nav>
+        <a class="button button--order" href="#">Заказать проект</a>
+        <button class="header__burger js-hamburger"><span></span></button>
+    </div>
+</header>
+<main class="main">
+    <section class="tabs">
+        <ul class="tabs__navigation margin-bottom-25 js-tabs" data-cont-id="tabs-content">
+            <li class="tabs__item tabs__item--active" data-tab-id="tab-1">
+                <a class="tabs__link">Фото</a>
+            </li>
+            <li class="tabs__item" data-tab-id="tab-2">
+                <a class="tabs__link">Видео</a>
+            </li>
+        </ul>
+        <div class="tabs__content" id="tabs-content">
+            <div class="tabs__pane js-tab-cont js-show tabs__pane--active" id="tab-1">
+                <div class="media margin-bottom-40">
+                    <div class="media__wrapper">
+                        <ul class="media__list">
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Фото)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Фото)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Фото)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Фото)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Фото)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Фото)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Фото)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Фото)</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tabs__pane js-tab-cont" id="tab-2">
+                <div class="media margin-bottom-40">
+                    <div class="media__wrapper">
+                        <ul class="media__list">
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Видео)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Видео)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Видео)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Видео)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Видео)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Видео)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Видео)</p>
+                                </a>
+                            </li>
+                            <li class="media__item">
+                                <a class="media__link" href="#">
+                                    <div class="media__picture">
+                                        <img class="media__img" src="img/dev/dev-media-450x253.png" width="206" height="115" alt="Медиа" loading="lazy">
+                                    </div>
+                                    <p class="media__date">16 сентября</p>
+                                    <p class="media__text">Тренировка 16 сентября – Смирнова 21.00 (Видео)</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer"></footer>
+<script src="plugins/jquery-3.6.0.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
+

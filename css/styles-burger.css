@@ -9,7 +9,6 @@
 .header {
     border-bottom: 4px solid var(--dark-gray);
     box-shadow: 0 20px 50px rgba(var(--black-opacity), 0.25);
-    font-family: "Montserrat", sans-serif;
     background-color: var(--white);
     color: var(--dark-gray);
     font-size: 18px;
