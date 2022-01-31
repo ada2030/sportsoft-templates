@@ -6,6 +6,7 @@ var sam = new function() {
     var self = this;
 
     self.body = $('body');
+    self.html = $('html');
 
     self.init = function() {
         self.menu.init();
@@ -25,8 +26,10 @@ var sam = new function() {
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
                     $('body').css('overflow', 'hidden');
+                    $('html').css('overflow', 'hidden');
                 } else {
                     $('body').css('overflow', 'unset');
+                    $('html').css('overflow', 'unset');
                 }
             });
 

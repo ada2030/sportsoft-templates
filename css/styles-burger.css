@@ -241,9 +241,18 @@
         left: 0;
         z-index: 101;
         background-color: var(--light-blue);
-        height: calc(100vh - 20px);
+        height: calc(100vh - 70px);
+        padding: 0 0 70px;
         overflow: scroll;
-        padding: 0 0 60px;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .menu::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
     }
 
     .menu.open {
@@ -458,11 +467,7 @@
 
     .menu {
         top: 70px;
-        height: calc(100vh - 10px);
-    }
-
-    .menu__list {
-        padding-bottom: 70px;
+        height: calc(100vh - 60px);
     }
 
     .menu__link {
