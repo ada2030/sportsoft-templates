@@ -11,6 +11,7 @@ var sam = new function() {
     self.init = function() {
         self.menu.init();
         self.tabs.init();
+        self.tabsMobile.init();
     };
 
     this.menu = new function() {
@@ -116,5 +117,22 @@ var sam = new function() {
         };
 
         this.callbacks = {};
+    };
+    this.tabsMobile = new function() {
+        this.init = function() {
+            var tabs = $('.tabs');
+            $(tabs).each(function() {
+                var itemTab = $(this).find($('.tabs__item'));
+                $(itemTab).click(function() {
+                    if ($(this).hasClass('tabs__item--active')) {
+                        $(this).parent().toggleClass('open');
+                        $(this).toggleClass('open');
+                        return false;
+                    }
+                    $(this).parent().toggleClass('open');
+                    $(this).toggleClass('open');
+                });
+            });
+        }
     };
 };

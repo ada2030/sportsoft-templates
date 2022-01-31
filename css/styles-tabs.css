@@ -9,33 +9,30 @@
 
 .tabs__item {
     margin: 0 15px 0 0;
+    border-radius: 50px;
+    background-color: var(--light-gray);
 }
 
 .tabs__item:last-child {
     margin: 0;
 }
 
-.tabs__item--active .tabs__link {
+.tabs__item:hover,
+.tabs__item--active {
     background-color: var(--dark-white);
-    color: var(--light-black);
-}
-
-.tabs__item--active .tabs__link:hover {
-    background-color: var(--dark-white);
-}
-
-.tabs__link:hover {
-    background-color: var(--light-gray);
     transition: 0.3s;
 }
 
+.tabs__item--active .tabs__link {
+    color: var(--light-black);
+    transition: 0.3s;
+}
 
 .tabs__link {
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     padding: 8px 15px;
-    border-radius: 50px;
     color: var(--gray);
     display: flex;
     align-items: center;
@@ -114,6 +111,61 @@
 }
 
 @media (max-width: 780px) {
+    .tabs__navigation {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tabs__item {
+        display: none;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .tabs__item--active {
+        display: block;
+        order: -1;
+    }
+
+    .tabs__link {
+        position: relative;
+    }
+
+    .tabs__navigation.open .tabs__item  {
+        display: block;
+    }
+
+    .tabs__item--active .tabs__link:before,
+    .tabs__item--active .tabs__link:after {
+        position: absolute;
+        content: '';
+        height: 6px;
+        width: 2px;
+        background-color: var(--light-blue);
+        top: 50%;
+        margin-top: -2px;
+        transition: 0.2s;
+    }
+
+    .tabs__item--active .tabs__link:before {
+        right: 20px;
+        transform: rotate(-45deg);
+    }
+
+    .tabs__item--active .tabs__link:after {
+        right: 16px;
+        transform: rotate(45deg);
+    }
+
+    .tabs__navigation.open .tabs__link:before {
+        transform: rotate(45deg);
+    }
+
+    .tabs__navigation.open .tabs__link:after {
+        transform: rotate(-45deg);
+    }
+
     /*не обязательные стили, использованы для красивой демонстрации*/
 
     .margin-bottom-40 {
@@ -135,16 +187,6 @@
 }
 
 @media (max-width: 480px) {
-    .tabs__item {
-        margin: 0 10px 0 0;
-    }
-
-    .tabs__link {
-        font-size: 14px;
-        line-height: 20px;
-        padding: 5px 10px;
-    }
-
     /*не обязательные стили, использованы для красивой демонстрации*/
 
     .media__wrapper {
