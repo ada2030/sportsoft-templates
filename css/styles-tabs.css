@@ -5,16 +5,12 @@
 .tabs__navigation {
     display: flex;
     width: max-content;
+    gap: 15px;
 }
 
 .tabs__item {
-    margin: 0 15px 0 0;
     border-radius: 50px;
     background-color: var(--light-gray);
-}
-
-.tabs__item:last-child {
-    margin: 0;
 }
 
 .tabs__item:hover,
@@ -114,12 +110,12 @@
     .tabs__navigation {
         flex-direction: column;
         width: 100%;
+        gap: 0;
     }
 
     .tabs__item {
         display: none;
         width: 100%;
-        margin: 0;
         border-radius: 0;
     }
 

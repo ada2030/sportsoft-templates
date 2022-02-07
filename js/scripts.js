@@ -25,13 +25,6 @@ var sam = new function() {
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
-                if ($(this).hasClass('open')) {
-                    $('body').css('overflow', 'hidden');
-                    $('html').css('overflow', 'hidden');
-                } else {
-                    $('body').css('overflow', 'unset');
-                    $('html').css('overflow', 'unset');
-                }
             });
 
             $(hasSubmenu).click(function () {
