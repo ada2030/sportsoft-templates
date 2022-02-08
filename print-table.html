@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Шаблоны SportSoft</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+<header class="header"></header>
+<main class="main">
+    <button id="printTable">Печать таблицы</button>
+    <table id="printMe">
+        <style>
+            @media print { /* Стили для печати */
+                #printMe .hidden { display:none; } /* что не надо печатать */
+                #printMe {
+                    font-size:14px;
+                    border: 1px solid #987;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                }
+                #printMe td,
+                #printMe th {
+                    border: 1px solid #999;
+                }
+            }
+        </style>
+        <tr>
+            <th>HTML</th>
+            <th>CSS</th>
+            <th>JavaScript</th>
+        </tr>
+        <tr>
+            <td>Тэги</td>
+            <td>Селекторы</td>
+            <td>Функции</td>
+        </tr>
+    </table>
+</main>
+<footer class="footer"></footer>
+<script src="plugins/jquery-3.6.0.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

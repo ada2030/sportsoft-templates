@@ -12,6 +12,7 @@ var sam = new function() {
         self.menu.init();
         self.tabs.init();
         self.tabsMobile.init();
+        self.printTable.init();
     };
 
     this.menu = new function() {
@@ -124,6 +125,34 @@ var sam = new function() {
                     }
                     $(this).parent().toggleClass('open');
                     $(this).toggleClass('open');
+                });
+            });
+        }
+    };
+    this.printTable = new function() {
+        this.init = function() {
+            jQuery(function ($) {
+                const tableToPrint = document.getElementById('printMe');
+
+                function printData(tableToPrint) {
+                    Popup($(tableToPrint).html());
+                }
+
+                function Popup(data) {
+                    const mywindow = window.open('', 'printMe', 'height=600, width=1000');
+                    // стили таблицы
+                    mywindow.document.write('<link rel="stylesheet" href="styles.css" type="text/css" />');
+                    mywindow.document.write(tableToPrint.outerHTML);
+                    mywindow.document.close(); // для IE >= 10
+                    mywindow.focus();          // для IE >= 10
+                    mywindow.print();
+                    mywindow.close();
+                    return true;
+                }
+
+                $(document).on('click', '#printTable', function () {
+                    printData();
+                    return false;
                 });
             });
         }
