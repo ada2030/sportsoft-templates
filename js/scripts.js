@@ -28,9 +28,11 @@ var sam = new function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    $('body').addClass('fixed');
+                    $('html').css('overflow', 'hidden');
+                    $('body').css('position', 'fixed');
                 } else {
-                    $('body').removeClass('fixed');
+                    $('html').css('overflow', 'unset');
+                    $('body').css('position', 'static');
                 }
             });
 
