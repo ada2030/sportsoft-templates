@@ -33,7 +33,7 @@ body.fixed {
     position: fixed;
     height: 70px;
     width: 100%;
-    background-color: var(--light-blue);
+    background-color: var(--black);
     bottom: 0;
     left: 0;
 }
