@@ -3,6 +3,8 @@ body.fixed {
     -ms-touch-action: none;
     overflow: hidden;
     position: fixed;
+    height: 100vh;
+    top: 0;
 }
 
 .container-x {
