@@ -1,9 +1,6 @@
 body.fixed {
-    touch-action: none;
-    -ms-touch-action: none;
     overflow: hidden;
     position: fixed;
-    height: 100%;
 }
 
 .container-x {
@@ -248,8 +245,8 @@ body.fixed {
         left: 0;
         z-index: 101;
         background-color: var(--light-blue);
-        height: calc(100vh + 100px);
-        padding: 0 0 250px;
+        height: 100vh;
+        padding: 0 0 150px;
         overflow: scroll;
         scroll-behavior: smooth;
         -ms-overflow-style: none;
