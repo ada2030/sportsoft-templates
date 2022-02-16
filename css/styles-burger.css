@@ -248,8 +248,8 @@ body.fixed {
         left: 0;
         z-index: 101;
         background-color: var(--light-blue);
-        height: 100vh;
-        padding: 0 0 150px;
+        height: calc(100vh + 100px);
+        padding: 0 0 250px;
         overflow: scroll;
         scroll-behavior: smooth;
         -ms-overflow-style: none;
