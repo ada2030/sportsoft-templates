@@ -3,8 +3,6 @@ body.fixed {
     -ms-touch-action: none;
     overflow: hidden;
     position: fixed;
-    height: 100vh;
-    top: 0;
 }
 
 .container-x {
@@ -241,7 +239,7 @@ body.fixed {
 
     .menu {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 80px;
         width: 100%;
         margin: 0;
@@ -249,7 +247,7 @@ body.fixed {
         left: 0;
         z-index: 101;
         background-color: var(--light-blue);
-        height: 200vh;
+        height: 100vh;
         padding: 0 0 150px;
         overflow: scroll;
         scroll-behavior: smooth;
