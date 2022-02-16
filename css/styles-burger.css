@@ -2,7 +2,9 @@ body.fixed {
     touch-action: none;
     -ms-touch-action: none;
     overflow: hidden;
-    position: relative;
+    position: fixed;
+    top: 0;
+    bottom: 0;
 }
 
 .container-x {
