@@ -1,3 +1,10 @@
+body.fixed {
+    touch-action: none;
+    -ms-touch-action: none;
+    overflow: hidden;
+    position: fixed;
+}
+
 .container-x {
     max-width: 1850px;
     margin: 0 auto;
@@ -19,6 +26,16 @@
     left: 0;
     z-index: 104;
     height: 90px;
+}
+
+.header__helper {
+    display: none;
+    position: fixed;
+    height: 70px;
+    width: 100%;
+    background-color: var(--light-blue);
+    bottom: 0;
+    left: 0;
 }
 
 .header__container {

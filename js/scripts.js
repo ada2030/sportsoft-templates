@@ -23,16 +23,17 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu');
+                iosHelper = $('.js-ios-helper');
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    $('html').css('overflow', 'hidden');
-                    $('body').css('position', 'fixed');
+                    $('body').addClass('fixed');
+                    $(iosHelper).css('display', 'block');
                 } else {
-                    $('html').css('overflow', 'unset');
-                    $('body').css('position', 'static');
+                    $('body').removeClass('fixed');
+                    $(iosHelper).css('display', 'none');
                 }
             });
 
