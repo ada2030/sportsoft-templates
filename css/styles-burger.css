@@ -1,3 +1,9 @@
+body.fixed {
+    touch-action: none;
+    -ms-touch-action: none;
+    overflow: hidden;
+}
+
 .container-x {
     max-width: 1850px;
     margin: 0 auto;

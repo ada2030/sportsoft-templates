@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Шаблоны SportSoft</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+<header class="header"></header>
+<main class="main">
+    <div class="slider">
+        <div class="slider__wrap">
+            <div class="slider__navs">
+                <ul class="slider__nav slider__nav--active js-slider-nav">
+                    <li class="slider__nav-item">Современный дизайн</li>
+                    <li class="slider__nav-item">Детальные протоколы матчей</li>
+                    <li class="slider__nav-item">Таблицы и сетки плей-офф любой конфигурации</li>
+                    <li class="slider__nav-item">Стильный профиль игрока</li>
+                    <li class="slider__nav-item">Стильный профиль команды</li>
+                    <li class="slider__nav-item">Статистика от А до Я (голы, ассисты, ЖК/КК)</li>
+                    <li class="slider__nav-item">Медиаблок (фото, видео, прямые трансляции)/li>
+                </ul>
+            </div>
+            <div class="slider__wrapper">
+                <ul class="slider__list js-tiny-slider"
+                    data-controls-container=".js-slider-controls"
+                    data-controls="true"
+                    data-nav="true"
+                    data-nav-container=".js-slider-nav"
+                    data-items="1"
+                    data-loop="true"
+                    data-autoplay="true"
+                    data-autoplay-timeout="5000"
+                    data-autoplay-over-pause="true"
+                    data-speed="1000"
+                    data-mouse-drag="true"
+                    data-mode="carousel"
+                >
+                    <li class="slider__item">
+                        <div class="pages">
+                            <p class="pages__name">Главная страница</p>
+                            <div class="pages__border">
+                                <img class="pages__img" src="/landings/mgu/img/slider-1.png" width="600" height="800" alt="Скриншот главной страницы">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slider__item">
+                        <div class="pages">
+                            <p class="pages__name">Матч / Протокол</p>
+                            <div class="pages__border">
+                                <img class="pages__img" src="/landings/mgu/img/slider-2.png" width="600" height="800" alt="Скриншот страницы матча">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slider__item">
+                        <div class="pages">
+                            <p class="pages__name">Турнир / Таблицы и сетки</p>
+                            <div class="pages__border">
+                                <img class="pages__img" src="/landings/mgu/img/slider-3.png" width="600" height="800" alt="Скриншот турнирной таблицы">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slider__item">
+                        <div class="pages">
+                            <p class="pages__name">Профиль игрока</p>
+                            <div class="pages__border">
+                                <img class="pages__img" src="mgu/img/slider-4.png" width="600" height="800" alt="Скриншот профиля игрока">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slider__item">
+                        <div class="pages">
+                            <p class="pages__name">Профиль команды</p>
+                            <div class="pages__border">
+                                <img class="pages__img" src="img/slider-5.png" width="600" height="800" alt="Скриншот профиля команды">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slider__item">
+                        <div class="pages">
+                            <p class="pages__name">События матча</p>
+                            <div class="pages__border">
+                                <img class="pages__img" src="img/slider-6.png" width="600" height="800" alt="Скриншот события матча">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slider__item">
+                        <div class="pages">
+                            <p class="pages__name">Медиа / Видео</p>
+                            <div class="pages__border">
+                                <img class="pages__img" src="img/slider-7.png" width="600" height="800" alt="Скриншот главной страницы">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="slider__arrows-block js-slider-controls">
+                    <a class="slider__arrows-link slider__arrows-link--left">
+                        <svg class="slider__arrow" width="20" height="20">
+                            <use xlink:href="img/sprite.svg#slider-arrow"></use>
+                        </svg>
+                    </a>
+                    <a class="slider__arrows-link slider__arrows-link--right">
+                        <svg class="slider__arrow" width="20" height="20">
+                            <use xlink:href="img/sprite.svg#slider-arrow"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer"></footer>
+<script src="plugins/jquery-3.6.0.js"></script>
+<script src='plugins/tiny-slider/tiny-slider.js'></script>
+<script src='js/scripts.js'></script>
+</body>
+</html>
