@@ -23,6 +23,7 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu');
+                absoluteBlock = $('.js-absolute-block')
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
@@ -32,6 +33,10 @@ var sam = new function() {
                 } else {
                     $('body').removeClass('fixed');
                 }
+            });
+
+            $(window).scrollTop(function() {
+                $(absoluteBlock).css('height', '100vh');
             });
 
             $(hasSubmenu).click(function () {

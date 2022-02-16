@@ -247,9 +247,9 @@ body.fixed {
         right: 0;
         left: 0;
         z-index: 101;
-        background-color: var(--gray);
-        height: calc(100vh + 100px);
-        padding: 0 0 250px;
+        background-color: var(--light-blue);
+        height: 100vh;
+        padding: 0 0 150px;
         overflow: scroll;
         scroll-behavior: smooth;
         -ms-overflow-style: none;
