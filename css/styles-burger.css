@@ -1,9 +1,5 @@
 body.fixed {
-    touch-action: none;
-    -ms-touch-action: none;
     overflow: hidden;
-    position: fixed;
-    height: 100%;
 }
 
 .container-x {
