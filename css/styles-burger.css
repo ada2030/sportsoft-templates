@@ -24,19 +24,19 @@ body.fixed {
     position: sticky;
     right: 0;
     left: 0;
-    z-index: 104;
+    z-index: 2;
     height: 90px;
 }
 
-.header__helper {
+.header-helper {
     display: none;
     position: fixed;
     height: 70px;
     width: 100%;
     background-color: var(--black);
-    bottom: -70px;
+    bottom: 0;
     left: 0;
-    z-index: 102;
+    z-index: 3;
 }
 
 .header__container {
@@ -256,7 +256,7 @@ body.fixed {
         margin: 0;
         right: 0;
         left: 0;
-        z-index: 101;
+        z-index: 1;
         background-color: var(--light-blue);
         height: 100vh;
         padding: 0 0 150px;
