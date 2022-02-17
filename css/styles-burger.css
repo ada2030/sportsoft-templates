@@ -1,7 +1,9 @@
-body {
+body.fixed {
     touch-action: none;
     -ms-touch-action: none;
     position: fixed;
+    top: 0;
+    height: 100vh;
 }
 
 .container-x {
