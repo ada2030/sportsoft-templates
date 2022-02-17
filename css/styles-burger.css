@@ -1,4 +1,4 @@
-body.fixed {
+body {
     touch-action: none;
     -ms-touch-action: none;
     position: fixed;
