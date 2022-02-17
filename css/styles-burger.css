@@ -1,10 +1,7 @@
 body.fixed {
     touch-action: none;
     -ms-touch-action: none;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
 }
 
 .container-x {
@@ -36,7 +33,7 @@ body.fixed {
     height: 70px;
     width: 100%;
     background-color: var(--black);
-    bottom: 0;
+    bottom: -70px;
     left: 0;
     z-index: 3;
 }
