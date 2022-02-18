@@ -23,17 +23,18 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu');
-                iosHelper = $('.js-ios-helper');
+                scrollPosition = 0;
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
+                    scrollPosition = window.pageYOffset;
                     $('body').addClass('fixed');
-                    $(iosHelper).css('display', 'block');
+                    $('body').css('top', -scrollPosition);
                 } else {
                     $('body').removeClass('fixed');
-                    $(iosHelper).css('display', 'none');
+                    window.scrollTo(0, scrollPosition);
                 }
             });
 

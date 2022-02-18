@@ -1,9 +1,8 @@
 body.fixed {
-    touch-action: none;
-    -ms-touch-action: none;
     position: fixed;
-    top: 0;
+    overflow: hidden;
     height: 100vh;
+    width: 100%;
 }
 
 .container-x {
@@ -22,7 +21,7 @@ body.fixed {
     font-size: 18px;
     line-height: 22px;
     top: 0;
-    position: sticky;
+    position: fixed;
     right: 0;
     left: 0;
     z-index: 2;
