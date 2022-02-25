@@ -22,7 +22,6 @@ body.fixed {
     font-size: 18px;
     line-height: 22px;
     top: 0;
-    position: sticky;
     overflow: visible;
     right: 0;
     left: 0;
