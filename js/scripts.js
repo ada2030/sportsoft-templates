@@ -30,8 +30,10 @@ var sam = new function() {
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
                     $(fictitiousBody).addClass('fixed');
+                    $('body').addClass('fixed');
                 } else {
                     $(fictitiousBody).removeClass('fixed');
+                    $('body').removeClass('fixed');
                 }
             });
 
