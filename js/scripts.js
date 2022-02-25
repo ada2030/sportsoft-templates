@@ -23,16 +23,15 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu');
+                fictitiousBody = $('.fictitious-body');
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    $('body').addClass('fixed');
-                    $('html').addClass('fixed');
+                    $(fictitiousBody).addClass('fixed');
                 } else {
-                    $('body').removeClass('fixed');
-                    $('html').removeClass('fixed')
+                    $(fictitiousBody).removeClass('fixed');
                 }
             });
 
