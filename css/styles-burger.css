@@ -3,7 +3,8 @@ html {
 }
 
 body.fixed {
-    overflow: hidden;
+    height: 100%;
+    position: relative;
 }
 
 html.fixed {
@@ -27,7 +28,7 @@ html.fixed {
     line-height: 22px;
     top: 0;
     position: sticky;
-    overflow: visible;
+    position: -webkit-sticky;
     right: 0;
     left: 0;
     z-index: 2;
@@ -245,7 +246,7 @@ html.fixed {
 
     .menu {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 80px;
         width: 100%;
         margin: 0;
