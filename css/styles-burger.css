@@ -6,6 +6,10 @@ body.fixed {
     overflow: hidden;
 }
 
+html.fixed {
+    overflow: hidden;
+}
+
 .container-x {
     max-width: 1850px;
     margin: 0 auto;
@@ -22,6 +26,7 @@ body.fixed {
     font-size: 18px;
     line-height: 22px;
     top: 0;
+    position: sticky;
     overflow: visible;
     right: 0;
     left: 0;
