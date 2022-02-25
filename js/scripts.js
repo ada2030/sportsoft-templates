@@ -23,7 +23,6 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu');
-                scrollPosition = 0;
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
@@ -31,10 +30,8 @@ var sam = new function() {
                 if ($(this).hasClass('open')) {
                     scrollPosition = window.pageYOffset;
                     $('body').addClass('fixed');
-                    $('body').css('top', -scrollPosition);
                 } else {
                     $('body').removeClass('fixed');
-                    window.scrollTo(0, scrollPosition);
                 }
             });
 

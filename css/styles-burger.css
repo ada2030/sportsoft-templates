@@ -1,8 +1,9 @@
+html {
+    height: 100%;
+}
+
 body.fixed {
-    position: fixed;
     overflow: hidden;
-    height: 100vh;
-    width: 100%;
 }
 
 .container-x {
@@ -26,17 +27,6 @@ body.fixed {
     left: 0;
     z-index: 2;
     height: 90px;
-}
-
-.header-helper {
-    display: none;
-    position: fixed;
-    height: 70px;
-    width: 100%;
-    background-color: var(--black);
-    bottom: -70px;
-    left: 0;
-    z-index: 3;
 }
 
 .header__container {
