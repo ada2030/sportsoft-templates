@@ -1,5 +1,9 @@
+.main {
+    margin: 80px 0 0;
+}
+
 .fictitious-body.fixed {
-    overflow: hidden
+    overflow: hidden;
 }
 
 .container-x {
@@ -18,8 +22,7 @@
     font-size: 18px;
     line-height: 22px;
     top: 0;
-    position: sticky;
-    position: -webkit-sticky;
+    position: fixed;
     right: 0;
     left: 0;
     z-index: 2;
@@ -467,6 +470,10 @@
 
     .header {
         height: 70px;
+    }
+
+    .main {
+        margin: 70px 0 0;
     }
 
     .menu {
