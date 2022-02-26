@@ -30,6 +30,7 @@ var sam = new function() {
                 if ($(this).hasClass('open')) {
                     $('body').addClass('fixed');
                     $('body').on('touchmove', function(e) { e.preventDefault(); });
+                    $('html').on('touchmove', function(e) { e.preventDefault(); });
                 } else {
                     $('body').removeClass('fixed');
                 }
