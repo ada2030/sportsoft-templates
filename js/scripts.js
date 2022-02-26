@@ -23,17 +23,16 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu');
-                fictitiousBody = $('.fictitious-body');
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    $(fictitiousBody).addClass('fixed');
                     $('body').addClass('fixed');
+                    $('body').on('touchmove', function(e) { e.preventDefault(); });
                 } else {
-                    $(fictitiousBody).removeClass('fixed');
                     $('body').removeClass('fixed');
+                    $('body').on('touchmove', function(e) { return true; });
                 }
             });
 
