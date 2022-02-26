@@ -28,9 +28,9 @@ var sam = new function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    $('body').addClass('fixed');
+                    $('html').addClass('fixed');
                 } else {
-                    $('body').removeClass('fixed');
+                    $('html').removeClass('fixed');
                 }
             });
 

@@ -1,12 +1,13 @@
-body {
-    -webkit-overflow-scrolling: touch;
+body.fixed {
+    overflow: auto;
     height: 100%;
     position: relative;
 }
 
-body.fixed {
-    -webkit-overflow-scrolling: auto;
+html.fixed {
     overflow: hidden;
+    height: 100%;
+    position: fixed
 }
 
 .container-x {
