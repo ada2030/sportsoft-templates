@@ -1,9 +1,12 @@
 body {
     -webkit-overflow-scrolling: touch;
+    height: 100%;
+    position: relative;
 }
 
 body.fixed {
     -webkit-overflow-scrolling: auto;
+    overflow: hidden;
 }
 
 .container-x {
