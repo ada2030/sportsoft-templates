@@ -7,7 +7,6 @@ body.fixed {
 html.fixed {
     overflow: hidden;
     height: 100%;
-    position: fixed
 }
 
 .container-x {
