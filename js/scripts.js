@@ -29,8 +29,6 @@ var sam = new function() {
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
                     $('body').addClass('fixed');
-                    $('body').on('touchmove', function(e) { e.preventDefault(); });
-                    $('html').on('touchmove', function(e) { e.preventDefault(); });
                 } else {
                     $('body').removeClass('fixed');
                 }
