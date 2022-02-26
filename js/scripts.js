@@ -32,7 +32,6 @@ var sam = new function() {
                     $('body').on('touchmove', function(e) { e.preventDefault(); });
                 } else {
                     $('body').removeClass('fixed');
-                    $('body').on('touchmove', function(e) { return true; });
                 }
             });
 
