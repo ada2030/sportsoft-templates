@@ -13,9 +13,6 @@ body {
 
 body.fixed {
     position: fixed;
-    bottom: 0;
-    overflow: hidden;
-    height: 110vh;
 }
 
 .container-x {
