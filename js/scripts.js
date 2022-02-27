@@ -22,21 +22,17 @@ var sam = new function() {
         this.init = function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
-                hasSubmenu = $('.js-has-submenu'),
-                absoluteBlock = $('.js-absolute-block'),
-                scrollPosition = 0;
+                hasSubmenu = $('.js-has-submenu');
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    scrollPosition = window.pageYOffset;
                     $('body').addClass('fixed');
-                    $('body').css('top', -scrollPosition);
+                    $('html').addClass('fixed');
                 } else {
                     $('body').removeClass('fixed');
-                    $(absoluteBlock).css('height', 'auto');
-                    window.scrollTo(0, scrollPosition);
+                    $('html').removeClass('fixed');
                 }
             });
 
