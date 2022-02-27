@@ -31,9 +31,9 @@ var sam = new function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    lock();
+                    lock(scrollElement);
                 } else {
-                    unlock();
+                    unlock(scrollElement);
                 }
             });
 
