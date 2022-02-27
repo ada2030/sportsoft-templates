@@ -33,7 +33,6 @@ var sam = new function() {
                     scrollPosition = window.pageYOffset;
                     $('body').addClass('fixed');
                     $('body').css('top', -scrollPosition);
-                    $(absoluteBlock).css('height', '100vh');
                 } else {
                     $('body').removeClass('fixed');
                     $(absoluteBlock).css('height', 'auto');
