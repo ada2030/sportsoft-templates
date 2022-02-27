@@ -29,9 +29,9 @@ var sam = new function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    bodyScrollLock.disableBodyScroll(targetElement);
+                    lock(targetElement);
                 } else {
-                    bodyScrollLock.enableBodyScroll(targetElement);
+                    unlock(targetElement);
                 }
             });
 
