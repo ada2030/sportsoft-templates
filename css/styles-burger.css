@@ -236,7 +236,7 @@
 
     .menu {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 80px;
         width: 100%;
         margin: 0;
