@@ -258,7 +258,8 @@ body.fixed {
         background-color: var(--light-blue);
         height: 100vh;
         padding: 0 0 150px;
-        overflow: scroll;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
         -ms-overflow-style: none;
         scrollbar-width: none;
