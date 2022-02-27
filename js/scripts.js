@@ -24,15 +24,16 @@ var sam = new function() {
         this.init = function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
-                hasSubmenu = $('.js-has-submenu');
+                hasSubmenu = $('.js-has-submenu'),
+                scrollElement = $('.menu');
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    lock();
+                    lock(scrollElement);
                 } else {
-                    unlock();
+                    unlock(scrollElement);
                 }
             });
 
