@@ -1,4 +1,4 @@
-import {lock, unlock, clearBodyLocks} from "../plugins/tua-bsl/tua-bsl.esm.browser.js";
+import {lock, unlock} from "../plugins/tua-bsl/tua-bsl.esm.browser.js";
 
 $(document).ready(function() {
     sam.init();
@@ -25,15 +25,15 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu'),
-                scrollElement = $('.menu');
+                scrollElement = $('.js-menu-scroll');
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    lock(scrollElement);
+                    lock();
                 } else {
-                    unlock(scrollElement);
+                    unlock();
                 }
             });
 
