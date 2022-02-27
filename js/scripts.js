@@ -23,14 +23,15 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu');
+                targetElement = $('.menu');
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    $('html').addClass('fixed');
+                    bodyScrollLock.disableBodyScroll(targetElement);
                 } else {
-                    $('html').removeClass('fixed');
+                    bodyScrollLock.enableBodyScroll(targetElement);
                 }
             });
 

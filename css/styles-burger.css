@@ -1,14 +1,3 @@
-body.fixed {
-    overflow: auto;
-    height: 100%;
-    position: relative;
-}
-
-html.fixed {
-    overflow: hidden;
-    height: 100%;
-}
-
 .container-x {
     max-width: 1850px;
     margin: 0 auto;
