@@ -1,3 +1,15 @@
+html.fixed {
+    height: 100%;
+    overflow: hidden;
+}
+
+body.fixed {
+    position: fixed;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+}
+
 .container-x {
     max-width: 1850px;
     margin: 0 auto;
@@ -236,7 +248,7 @@
 
     .menu {
         display: none;
-        position: fixed;
+        position: absolute;
         top: 80px;
         width: 100%;
         margin: 0;
@@ -246,8 +258,7 @@
         background-color: var(--light-blue);
         height: 100vh;
         padding: 0 0 150px;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
+        overflow: scroll;
         scroll-behavior: smooth;
         -ms-overflow-style: none;
         scrollbar-width: none;

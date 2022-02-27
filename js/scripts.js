@@ -1,5 +1,3 @@
-import {lock, unlock} from "../plugins/tua-bsl/tua-bsl.esm.browser.js";
-
 $(document).ready(function() {
     sam.init();
 });
@@ -25,15 +23,20 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu'),
-                scrollElement = $('.js-menu-scroll');
+                scrollPosition = 0;
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    lock(scrollElement);
+                    scrollPosition = window.pageYOffset;
+                    $('body').addClass('fixed');
+                    $('html').addClass('fixed');
+                    $('body').css('top', -scrollPosition);
                 } else {
-                    unlock(scrollElement);
+                    $('body').removeClass('fixed');
+                    $('html').removeClass('fixed');
+                    window.scrollTo(0, scrollPosition);
                 }
             });
 
