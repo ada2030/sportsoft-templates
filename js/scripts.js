@@ -23,6 +23,7 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu'),
+                absoluteBlock = $('.js-absolute-block'),
                 scrollPosition = 0;
 
             $(hamburger).click(function() {
@@ -31,11 +32,11 @@ var sam = new function() {
                 if ($(this).hasClass('open')) {
                     scrollPosition = window.pageYOffset;
                     $('body').addClass('fixed');
-                    $('html').addClass('fixed');
                     $('body').css('top', -scrollPosition);
+                    $(absoluteBlock).css('height', '100vh');
                 } else {
                     $('body').removeClass('fixed');
-                    $('html').removeClass('fixed');
+                    $(absoluteBlock).css('height', 'auto');
                     window.scrollTo(0, scrollPosition);
                 }
             });
