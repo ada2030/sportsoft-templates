@@ -1,0 +1,168 @@
+.slider {
+    position: relative;
+}
+
+.slider__list {
+    margin: 0 0 90px;
+}
+
+.slider__arrows-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.slider__arrows-link {
+    display: block;
+    position: absolute;
+    bottom: -21px;
+    padding: 15px;
+}
+
+.slider__arrows-link--left {
+    left: calc(50% - 98px);
+}
+
+.slider__arrows-link--right {
+    right: calc(50% - 98px);
+}
+
+.slider__arrows-link--left .slider__arrow {
+    transform: rotate(180deg);
+}
+
+.slider__arrow {
+    fill: var(--gray);
+}
+
+.slider__arrows-link:hover .slider__arrow {
+    fill: var(--dark-gray);
+    transition: 0.3s;
+}
+
+.slider__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 25px;
+}
+
+.slider__nav-item {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid var(--white);
+    background-color: var(--gray);
+}
+
+.slider__nav-item.tns-nav-active,
+.slider__nav-item:hover {
+    background-color: var(--dark-gray);
+    transition: 0.3s;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 90px;
+}
+
+.info__block {
+    border: 1px solid var(--dark-gray);
+    border-radius: 10px;
+    height: 405px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.info__block::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.info__picture {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.info__img {
+    width: 100%;
+    height: auto;
+}
+
+.info__text {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 80px;
+    position: absolute;
+    bottom: -90px;
+    color: var(--light-blue);
+}
+
+@media (max-width: 1200px) {
+    .slider__list {
+        margin: 0 0 60px;
+    }
+
+    .info {
+        gap: 25px;
+    }
+
+    .info__block {
+        height: 220px;
+    }
+
+    .info__text {
+        font-size: 28px;
+        line-height: 34px;
+        bottom: -45px;
+    }
+}
+
+@media (max-width: 780px) {
+    .slider__list {
+        margin: 0 0 40px;
+    }
+
+    .info {
+        grid-template-columns: repeat(1,1fr);
+        gap: 40px;
+    }
+
+    .info__block {
+        height: 280px;
+    }
+
+    .info__text {
+        font-size: 22px;
+        line-height: 28px;
+        position: static;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider__list {
+        margin: 0 0 25px;
+    }
+
+    .info {
+        gap: 20px;
+    }
+
+    .info__block {
+        height: 180px;
+        border-radius: 5px;
+    }
+
+    .info__text {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
