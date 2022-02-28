@@ -12,12 +12,8 @@ body {
 }
 
 body.fixed {
-    position: fixed;
-    overflow: hidden;
-}
-
-.relative {
     position: relative;
+    overflow: hidden;
 }
 
 .container-x {
@@ -36,7 +32,7 @@ body.fixed {
     font-size: 18px;
     line-height: 22px;
     top: 0;
-    position: fixed;
+    position: sticky;
     right: 0;
     left: 0;
     z-index: 2;
@@ -240,10 +236,6 @@ body.fixed {
 }
 
 @media (max-width: 1200px) {
-    .main {
-        margin: 70px 0 0;
-    }
-
     .header.open {
         background-color: var(--light-blue);
     }
@@ -489,10 +481,6 @@ body.fixed {
 
     .header {
         height: 70px;
-    }
-
-    .main {
-        margin: 70px 0 0;
     }
 
     .menu {
