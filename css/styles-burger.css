@@ -5,6 +5,7 @@ html {
 body {
     overflow: visible;
     position: static;
+    height: 100%;
 }
 
 html.fixed {
