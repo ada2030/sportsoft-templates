@@ -15,6 +15,12 @@ html.fixed {
     overflow: hidden;
 }
 
+html.fixed::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
 body.fixed {
     position: relative;
     overflow: hidden;
