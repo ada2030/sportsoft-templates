@@ -15,6 +15,10 @@ body.fixed {
     position: fixed;
 }
 
+.relative {
+    position: relative;
+}
+
 .container-x {
     max-width: 1850px;
     margin: 0 auto;
