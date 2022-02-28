@@ -13,7 +13,6 @@ body {
 
 html.fixed {
     position: relative;
-    overflow: hidden;
 }
 
 body.fixed {
