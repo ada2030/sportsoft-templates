@@ -6,6 +6,7 @@ body {
 }
 
 html.fixed {
+    position: relative;
     overflow: hidden;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
