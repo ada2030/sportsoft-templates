@@ -22,19 +22,15 @@ var sam = new function() {
         this.init = function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
-                hasSubmenu = $('.js-has-submenu'),
-                scrollPosition = 0;
+                hasSubmenu = $('.js-has-submenu');
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    scrollPosition = window.pageYOffset;
                     $('body').addClass('fixed');
-                    $('body').css('top', -scrollPosition);
                 } else {
                     $('body').removeClass('fixed');
-                    window.scrollTo(0, scrollPosition);
                 }
             });
 
