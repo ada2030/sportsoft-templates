@@ -7,6 +7,8 @@ html {
 body {
     overflow: visible;
     position: static;
+    height: 100%;
+    width: 100%;
 }
 
 html.fixed {
@@ -52,7 +54,7 @@ body.fixed::-webkit-scrollbar {
     font-size: 18px;
     line-height: 22px;
     top: 0;
-    position: sticky;
+    position: fixed;
     right: 0;
     left: 0;
     z-index: 2;
@@ -256,6 +258,10 @@ body.fixed::-webkit-scrollbar {
 }
 
 @media (max-width: 1200px) {
+    .main {
+        margin: 70px 0 0;
+    }
+
     .header.open {
         background-color: var(--light-blue);
     }
@@ -501,6 +507,10 @@ body.fixed::-webkit-scrollbar {
 
     .header {
         height: 70px;
+    }
+
+    .main {
+        margin: 70px 0 0;
     }
 
     .menu {
