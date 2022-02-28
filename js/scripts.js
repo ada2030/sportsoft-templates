@@ -31,9 +31,11 @@ var sam = new function() {
                 if ($(this).hasClass('open')) {
                     scrollPosition = window.pageYOffset;
                     $('body').addClass('fixed');
+                    $('html').addClass('fixed');
                     $('body').css('top', -scrollPosition);
                 } else {
                     $('body').removeClass('fixed');
+                    $('html').removeClass('fixed');
                     window.scrollTo(0, scrollPosition);
                 }
             });
