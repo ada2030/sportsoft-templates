@@ -23,20 +23,31 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu'),
-                scrollPosition = 0;
+                scrollPosition = 0,
+                is_safari = navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1 &&  navigator.userAgent.indexOf('Android') == -1;
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    scrollPosition = window.pageYOffset;
-                    $('body').addClass('fixed');
-                    $('html').addClass('fixed');
-                    $('body').css('top', -scrollPosition);
+                    if (is_safari) {
+                        scrollPosition = window.pageYOffset;
+                        $('html').addClass('fixed-safari');
+                        $('body').css('top', -scrollPosition);
+                        $('body').addClass('fixed-safari');
+                    }
+                    else {
+                        $('body').addClass('fixed');
+                    }
                 } else {
-                    $('body').removeClass('fixed');
-                    $('html').removeClass('fixed');
-                    window.scrollTo(0, scrollPosition);
+                    if (is_safari) {
+                        $('body').removeClass('fixed-safari');
+                        $('html').removeClass('fixed-safari');
+                        window.scrollTo(0, scrollPosition);
+                    }
+                    else {
+                        $('body').removeClass('fixed');
+                    }
                 }
             });
 

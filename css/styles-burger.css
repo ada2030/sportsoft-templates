@@ -1,4 +1,4 @@
-html.fixed {
+html.fixed-safari {
     height: calc(100vh + 80px);
     overflow: hidden;
     scroll-behavior: smooth;
@@ -6,13 +6,13 @@ html.fixed {
     scrollbar-width: none;
 }
 
-html.fixed::-webkit-scrollbar {
+html.fixed-safari::-webkit-scrollbar {
     width: 0;
     height: 0;
     display: none;
 }
 
-body.fixed {
+body.fixed-safari {
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -21,10 +21,14 @@ body.fixed {
     scrollbar-width: none;
 }
 
-body.fixed::-webkit-scrollbar {
+body.fixed-safari::-webkit-scrollbar {
     width: 0;
     height: 0;
     display: none;
+}
+
+body.fixed {
+    overflow: hidden;
 }
 
 .container-x {
