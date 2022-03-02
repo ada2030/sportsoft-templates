@@ -7,6 +7,7 @@ var sam = new function() {
 
     self.body = $('body');
     self.html = $('html');
+    self.isSafari = navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1 &&  navigator.userAgent.indexOf('Android') == -1;
 
     self.init = function() {
         self.menu.init();
@@ -23,14 +24,13 @@ var sam = new function() {
             var hamburger = $('.js-hamburger'),
                 hamburgerOpen = $('.js-hamburger-open'),
                 hasSubmenu = $('.js-has-submenu'),
-                scrollPosition = 0,
-                is_safari = navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1 &&  navigator.userAgent.indexOf('Android') == -1;
+                scrollPosition = 0;
 
             $(hamburger).click(function() {
                 $(hamburgerOpen).toggleClass('open');
                 $(this).toggleClass('open');
                 if ($(this).hasClass('open')) {
-                    if (is_safari) {
+                    if (sam.isSafari) {
                         scrollPosition = window.pageYOffset;
                         $('html').addClass('fixed-safari');
                         $('body').css('top', -scrollPosition);
@@ -40,7 +40,7 @@ var sam = new function() {
                         $('body').addClass('fixed');
                     }
                 } else {
-                    if (is_safari) {
+                    if (sam.isSafari) {
                         $('body').removeClass('fixed-safari');
                         $('html').removeClass('fixed-safari');
                         window.scrollTo(0, scrollPosition);
