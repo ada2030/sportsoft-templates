@@ -13,7 +13,7 @@ html.fixed-safari::-webkit-scrollbar {
 }
 
 body.fixed-safari {
-    height: 100%;
+    height: 100vh;
     position: relative;
     overflow: hidden;
     scroll-behavior: smooth;
