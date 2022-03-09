@@ -53,7 +53,7 @@ var sam = new function() {
 
             $(hasSubmenu).click(function () {
                 event.preventDefault();
-                var submenu = $(this).find('.js-submenu');
+                var submenu = $(this).siblings('.js-submenu');
                 $(submenu).toggleClass('open');
             });
         };
