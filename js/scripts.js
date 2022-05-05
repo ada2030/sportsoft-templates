@@ -15,6 +15,9 @@ var sam = new function() {
         self.tabsMobile.init();
         self.printTable.init();
         self.tinySlider.init();
+        self.select.init();
+        self.dropdown.init();
+        self.filterBurger.init();
     };
 
     this.menu = new function() {
@@ -290,5 +293,228 @@ var sam = new function() {
         };
 
         this.callbacks = {};
+    };
+    this.select = new function() {
+        this.init = function() {
+            $('select.js-select').each(function() {
+                $(this).samselect($(this).data());
+            });
+
+        };
+    };
+    this.dropdown = new function() {
+        let that = this;
+
+        this.init = function() {
+            $('.js-dropdown').each(function() {
+                that.build(this);
+            });
+        };
+
+        this.toggleUl = function(title, ul) {
+            if ($(title).parent().hasClass('js-open')) {
+                $(title).parent().removeClass('js-open');
+                $(ul).removeClass('select-item__options--active').hide();
+
+                self.body.off('click');
+            } else {
+                $(title).parent().addClass('js-open');
+                $(ul).addClass('select-item__options--active').show();
+
+                let dropdownId = $(title).parent().attr('id');
+                self.body.click(function(event) {
+                    event = event || window.event;
+                    that.closeDropdowns(event, dropdownId);
+                });
+            }
+        };
+
+        this.closeDropdowns = function(event, dropdownId) {
+            let hide = true;
+            if ($(event.target).parents('.js-div-dropdown').length) {
+                let div = $(event.target).parents('.js-div-dropdown');
+                if ($(div).attr('id') == dropdownId) {
+                    hide = false;
+                }
+            }
+            if (hide) {
+                $('.js-div-dropdown.js-open').each(function() {
+                    let title = $(this).find('.js-div-dropdown-title'),
+                        ul = $(this).find('.js-div-dropdown-ul');
+
+                    that.toggleUl(title, ul);
+                });
+            }
+        };
+
+        this.change = function(li) {
+            let div = $(li).parents('.js-div-dropdown'),
+                title = $(div).find('.js-div-dropdown-title'),
+                ul = $(div).find('.js-div-dropdown-ul');
+
+            $(ul).find('li.js-active').removeClass('js-active');
+            $(li).addClass('js-active');
+
+            if ($(ul).data('customize')) {
+                customizeStyle = $(ul).data('customize');
+            }
+
+            title = that.customize.title(title, ul);
+            that.toggleUl(title, ul);
+        };
+
+        this.getId = function(step) {
+            if (!step) {
+                step = 0;
+            }
+            let rand = Date.now();
+            if ($('#js-div-dropdown-' + rand).length) {
+                return that.getId(++step);
+            }
+
+            return rand;
+        };
+
+        this.getDefaultScroll = function() {
+            return {
+                'autohidemode'      : false,
+                'cursorwidth'       : '4px',
+                'cursorborder'      : 'none',
+                'cursorborderradius': '3px',
+                'zindex'            : '998',
+                'scrollspeed'       : '0',
+                'mousescrollstep'   : 40,
+                'touchbehavior'     : sam.isTablet,
+                'railpadding'       : {top: 4, right: 2, left: 0, bottom: 4}
+            };
+        };
+
+        this.customize = {
+            div: function(div, ul) {
+                $(div).addClass('dropdown');
+                if ($(ul).data('width')) {
+                    $(div).css('width', $(ul).data('width'));
+                }
+                if ($(ul).data('dark')) {
+                    div.addClass('dropdown--dark');
+                }
+                if ($(ul).data('white')) {
+                    div.addClass('dropdown--white');
+                }
+                if ($(ul).data('transparent')) {
+                    div.addClass('dropdown--transparent');
+                }
+                if ($(ul).data('disabled')) {
+                    div.addClass('dropdown--disabled');
+                }
+                return div;
+            },
+            title: function(title, dropdown) {
+                let html = '';
+                if ($(dropdown).find('li.js-active').length) {
+                    html = $(dropdown).find('li.js-active').html();
+                } else {
+                    html = $(dropdown).find('li:first-child').html();
+                }
+                $(title).addClass('dropdown__title');
+                $(title).html(html);
+                return $(title);
+            },
+            ul: function(ul) {
+                $(ul).addClass('dropdown__options');
+                return ul;
+            },
+            li: function(li) {
+                $(li).addClass('dropdown__option');
+                return li;
+            },
+            a: function(a) {
+                $(a).addClass('dropdown__link dropdown__link--dropdown');
+            },
+            scroll: function() {
+                var params = that.getDefaultScroll();
+                params.cursorcolor = '#0044af';
+                params.cursoropacitymax = 0.75;
+                params.cursoropacitymin = 0.75;
+
+                return params;
+            }
+        };
+
+        this.build = function(dropdown) {
+            let id = that.getId(),
+                div = $('<div>', {'id': 'js-div-dropdown-' + id, 'class': 'js-div-dropdown'}),
+                title = $('<div>', {'class': 'js-div-dropdown-title'}),
+                ul = $(dropdown).clone();
+
+            $(ul).addClass('js-div-dropdown-ul');
+
+            that.customize.title(title, ul);
+            that.customize.ul(ul);
+            $(ul).find('li').each(function() {
+                that.customize.li(this);
+                that.customize.a($(this).find('a'));
+                $(this).click(function() {
+                    that.change(this);
+                });
+            });
+
+            that.customize.title(title, ul);
+            that.customize.div(div, dropdown);
+
+            $(div).append(title, ul);
+            $(dropdown).replaceWith(div);
+
+            if (!ul.data('disabled')) {
+                $(title).click(function() {
+                    that.toggleUl(this, ul);
+                });
+            }
+
+            if ($(ul).find('li').length > 8) {
+                var liHeight = that.getLiHeight($(ul).find('li')[0], true); $(ul).hide();
+                $(ul).css({
+                    'maxHeight'   : liHeight * 8 + 16,
+                    'paddingRight': '12px'
+                });
+                $(ul).niceScroll(that.customize.scroll());
+            }
+
+            $(ul).parents('.js-dropdown-cont').addClass('js-already-init')
+        };
+
+        this.getLiHeight = function(el, isLi) {
+            let height;
+            if (isLi) {
+                height = $(el).outerHeight();
+                if (height === 0) {
+                    $(el).addClass('js-calc-height');
+                    return that.getLiHeight($(el).parent(), false);
+                }
+            } else {
+                height = $(el).show().find('.js-calc-height').outerHeight();
+                if (height === 0) {
+                    return getLiHeight($(el).parent(), false);
+                } else {
+                    $(el).show().find('.js-calc-height').removeClass('js-calc-height');
+                    $(el).hide();
+                }
+            }
+
+            return height;
+        };
+    };
+    this.filterBurger = new function() {
+        var that = this;
+
+        this.init = function() {
+            var burger = $('.js-burger');
+
+            $(burger).click(function() {
+                var burgerBody = $(this).siblings('.js-burger-body');
+                $(this).toggleClass('open');
+                $(burgerBody).toggleClass('open');
+            });
+        };
     };
 };

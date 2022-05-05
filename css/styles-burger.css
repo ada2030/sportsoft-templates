@@ -31,6 +31,10 @@ body.fixed {
     overflow: hidden;
 }
 
+.main {
+    margin: 90px auto 0;
+}
+
 .container-x {
     max-width: 1850px;
     margin: 0 auto;
@@ -227,6 +231,10 @@ body.fixed {
 }
 
 @media (max-width: 1400px) {
+    .main {
+        margin: 80px auto 0;
+    }
+
     .header {
         height: 80px;
     }
