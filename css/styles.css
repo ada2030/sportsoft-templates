@@ -80,6 +80,7 @@ html {
   --light-black: #141414;
   --light-gray: #F8F8F8;
   --gray: #727272;
+  --red: #E33A3A;
 }
 
 /* применение var(--color-blue); */

@@ -18,6 +18,9 @@ var sam = new function() {
         self.select.init();
         self.dropdown.init();
         self.filterBurger.init();
+        self.modal.init();
+        self.showPassword.init();
+        self.addMask.init();
     };
 
     this.menu = new function() {
@@ -514,6 +517,121 @@ var sam = new function() {
                 var burgerBody = $(this).siblings('.js-burger-body');
                 $(this).toggleClass('open');
                 $(burgerBody).toggleClass('open');
+            });
+        };
+    };
+    this.modal = new function() {
+        var that = this;
+
+        this.state = {
+            'isActive': false,
+            'popup'   : null,
+            'btn'     : null
+        };
+
+        this.init = function() {
+            self.body.on('click', 'a[data-toggle="modal"], button.js-popup-button', function() {
+                $(this).toggleClass('active');
+
+                var $popup = $(this).hasClass('js-popup-button') ? $($(this).data('target')) : $($(this).attr('href'));
+                if ($popup.length) {
+                    if (that.state.isActive) {
+                        that.close(that.state.popup, that.state.btn);
+                    }
+                    that.open($popup, $(this));
+                }
+            });
+        };
+
+        this.open = function($popup, $btn) {
+            let popupId = $popup.attr('id');
+
+            that.overlay.open();
+            $popup.addClass('active').addClass('open');
+            $btn.addClass('active');
+
+            that.overlay.$overlay.click(function(event) {
+                event = event || window.event;
+                let $parent = $(event.target).parents('#' + popupId);
+                if ($parent.length) {
+                    return;
+                }
+
+                that.close($popup, $btn);
+            });
+
+            $popup.find('.js-close').click(function() {
+                that.close($popup, $btn);
+            });
+
+            that.state.isActive = true;
+            that.state.popup = $popup;
+            that.state.btn = $btn;
+        };
+
+        this.close = function($popup, $btn) {
+            that.overlay.close();
+            $popup.removeClass('active').removeClass('open');
+            $btn.removeClass('active');
+
+            that.overlay.$overlay.off('click');
+            $popup.find('.js-close').off('click');
+
+            that.state.isActive = false;
+            that.state.popup = null;
+            that.state.btn = null;
+        };
+
+        this.overlay = new function() {
+            var context = this;
+
+            this.$overlay = $('.js-overlay');
+
+            this.open = function() {
+                context.$overlay.show();
+                self.body.addClass('fixed');
+            };
+
+            this.close = function() {
+                context.$overlay.hide();
+                self.body.removeClass('fixed');
+            };
+        };
+    };
+    this.showPassword = new function() {
+        var that = this;
+
+        this.init = function() {
+            var showButton = $('.form__show');
+
+            $(showButton).click(function() {
+                var passwordInput = $(this).siblings('.form__input');
+                event.preventDefault();
+                if ($(passwordInput).attr('type') === 'password'){
+                    $(passwordInput).attr('type', 'text');
+                    $(this).addClass('active');
+                } else {
+                    $(passwordInput).attr('type', 'password');
+                    $(this).removeClass('active');
+                }
+            });
+        };
+    };
+    this.addMask = new function() {
+        var that = this;
+
+        this.init = function() {
+            var phoneInput = $('.js-phone-input');
+            var birthdateInput = $('.js-birthdate-input');
+            $(phoneInput).mask('+7 (999) 999-99-99').on('click', function () {
+                if ($(this).val() === '+7 (___) ___-__-__') {
+                    $(this).get(0).setSelectionRange(4, 4);
+                }
+            });
+            $(birthdateInput).mask("99.99.9999").on('click', function () {
+                if ($(this).val() === '__.__.____') {
+                    $(this).get(0).setSelectionRange(0, 0);
+                }
             });
         };
     };

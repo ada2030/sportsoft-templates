@@ -8,6 +8,7 @@
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/styles-burger.css" rel="stylesheet">
     <link href="css/styles-tabs.css" rel="stylesheet">
+    <link href="css/styles-modal.css" rel="stylesheet">
 </head>
 <body>
 <header class="header js-hamburger-open">
@@ -72,7 +73,7 @@
                 </li>
             </ul>
         </nav>
-        <a class="button button--order" href="#">Заказать проект</a>
+        <a class="button button--order" data-toggle="modal" href="#login-popup">Войти</a>
         <button class="header__burger js-hamburger"><span></span></button>
     </div>
 </header>
@@ -252,9 +253,69 @@
         </div>
     </section>
 </main>
+<div class="modal" id="login-popup">
+    <div class="modal__top">
+        <a class="modal__close js-close">
+            <svg class="modal__icon" width="20" height="20"><use xlink:href="/img/sprite.svg#cross"></use></svg>
+        </a>
+    </div>
+    <form class="form form--login">
+        <div class="form__group">
+            <label class="form__label" for="login">Логин / E-mail</label>
+            <input class="form__input" type="text" id="login">
+            <div class="form__help">Необходимо заполнить «Логин или Email».</div>
+        </div>
+        <div class="form__group">
+            <label class="form__label" for="phone">Телефон</label>
+            <input class="form__input js-phone-input" type="text" id="phone">
+            <div class="form__help">Необходимо заполнить «Телефон».</div>
+        </div>
+        <div class="form__group">
+            <label class="form__label" for="password">Пароль</label>
+            <div class="form__password">
+                <input class="form__input" type="password" id="password">
+                <a class="form__show">
+                    <div class="form__show-wrap">
+                        <svg class="form__show-icon" width="20" height="20"><use xlink:href="/img/sprite.svg#show"></use></svg>
+                    </div>
+                </a>
+            </div>
+            <div class="form__help">Необходимо заполнить «Пароль».</div>
+        </div>
+        <div class="form__flex form__flex--right">
+            <a class="form__link" data-toggle="modal" href="#forgot-password">Забыли пароль?</a>
+        </div>
+        <div class="form__recaptcha">тут будет recaptcha</div>
+        <button class="button">Войти</button>
+    </form>
+</div>
+<!--попап восстановления пароля: email-->
+<div class="modal" id="forgot-password">
+    <div class="modal__top">
+        <a class="modal__close js-close">
+            <svg class="modal__icon" width="20" height="20"><use xlink:href="/img/sprite.svg#cross"></use></svg>
+        </a>
+    </div>
+    <form class="form form--login">
+        <div class="form__flex form__flex--center">
+            <p class="form__text">Забыли пароль?</p>
+        </div>
+        <div class="form__flex form__flex--center">
+            <p class="form__info">Введите e-mail, на который был зарегистрирован аккаунт, после чего нажмите на кнопку “ввостановить пароль” и следуйте инструкции указанной в письме</p>
+        </div>
+        <div class="form__group">
+            <label class="form__label" for="recovery-email">Логин / E-mail</label>
+            <input class="form__input" type="text" id="recovery-email">
+            <div class="form__help">Необходимо заполнить «Логин или Email».</div>
+        </div>
+        <button class="button">восстановить пароль</button>
+    </form>
+</div>
+<div class="overlay js-overlay"></div>
 <footer class="footer"></footer>
 <script src="plugins/jquery-3.6.0.js"></script>
 <script src="js/scripts.js"></script>
+<script src="plugins/jquery.maskedinput/jquery.maskedinput.js"></script>
 </body>
 </html>
 

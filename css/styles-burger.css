@@ -184,7 +184,7 @@ body.fixed {
 }
 
 .button--order:hover {
-    background-color: var(--dark-blue);
+    background-color: var(--black);
     color: var(--white);
 }
 
@@ -471,10 +471,6 @@ body.fixed {
     .header__burger.open span:after {
         transition-delay: 0s, 0.2s;
     }
-
-    .header .button--order {
-        display: none;
-    }
 }
 
 @media (max-width: 800px) {
@@ -528,5 +524,9 @@ body.fixed {
 
     .header__burger {
         margin-left: 25px;
+    }
+
+    .header .button--order {
+        display: none;
     }
 }
