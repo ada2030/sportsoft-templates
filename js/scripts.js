@@ -16,6 +16,7 @@ var sam = new function() {
         self.printTable.init();
         self.tinySlider.init();
         self.select.init();
+        self.cookieDisclaimer.init();
         self.dropdown.init();
         self.filterBurger.init();
         self.modal.init();
@@ -303,6 +304,24 @@ var sam = new function() {
                 $(this).samselect($(this).data());
             });
 
+        };
+    };
+    this.cookieDisclaimer = new function() {
+        var that = this;
+
+        var cookieName = 'show-banner-cookies';
+
+        this.init = function() {
+            var cookie = $.cookie(cookieName);
+            if (!cookie) {
+                setTimeout(function() {
+                    $(".js-cookie-banner").toggle(true, 300);
+                }, 500);
+            }
+            $(".js-cookie-banner-accept").click(function() {
+                $.cookie(cookieName, 1, {expires: 30, path: '/'});
+                $(".js-cookie-banner").slideUp(300);
+            });
         };
     };
     this.dropdown = new function() {
