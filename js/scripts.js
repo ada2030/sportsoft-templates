@@ -10,6 +10,7 @@ var sam = new function() {
     self.isSafari = navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1 &&  navigator.userAgent.indexOf('Android') == -1;
 
     self.init = function() {
+        self.modal.init();
         self.menu.init();
         self.tabs.init();
         self.tabsMobile.init();
@@ -19,11 +20,87 @@ var sam = new function() {
         self.cookieDisclaimer.init();
         self.dropdown.init();
         self.filterBurger.init();
-        self.modal.init();
         self.showPassword.init();
         self.addMask.init();
     };
+    this.modal = new function() {
+        var that = this;
 
+        this.state = {
+            'isActive': false,
+            'popup'   : null,
+            'btn'     : null
+        };
+
+        this.init = function() {
+            self.body.on('click', 'a[data-toggle="modal"], button.js-popup-button', function() {
+                $(this).toggleClass('active');
+
+                var $popup = $(this).hasClass('js-popup-button') ? $($(this).data('target')) : $($(this).attr('href'));
+                if ($popup.length) {
+                    if (that.state.isActive) {
+                        that.close(that.state.popup, that.state.btn);
+                    }
+                    that.open($popup, $(this));
+                }
+            });
+        };
+
+        this.open = function($popup, $btn) {
+            let popupId = $popup.attr('id');
+
+            that.overlay.open();
+            $popup.addClass('active').addClass('open');
+            $btn.addClass('active');
+
+            that.overlay.$overlay.click(function(event) {
+                event = event || window.event;
+                let $parent = $(event.target).parents('#' + popupId);
+                if ($parent.length) {
+                    return;
+                }
+
+                that.close($popup, $btn);
+            });
+
+            $popup.find('.js-close').click(function() {
+                that.close($popup, $btn);
+            });
+
+            that.state.isActive = true;
+            that.state.popup = $popup;
+            that.state.btn = $btn;
+        };
+
+        this.close = function($popup, $btn) {
+            that.overlay.close();
+            $popup.removeClass('active').removeClass('open');
+            $btn.removeClass('active');
+
+            that.overlay.$overlay.off('click');
+            $popup.find('.js-close').off('click');
+
+            that.state.isActive = false;
+            that.state.popup = null;
+            that.state.btn = null;
+        };
+
+        this.overlay = new function() {
+            var context = this;
+
+            this.$overlay = $('.js-overlay');
+
+            this.open = function() {
+                context.$overlay.show();
+                self.body.addClass('fixed');
+            };
+
+            this.close = function() {
+                context.$overlay.hide();
+                self.body.removeClass('fixed');
+            };
+        };
+    };
     this.menu = new function() {
         var that = this;
 
@@ -61,6 +138,7 @@ var sam = new function() {
             $(hasSubmenu).click(function () {
                 event.preventDefault();
                 var submenu = $(this).siblings('.js-submenu');
+                $(this).parent().toggleClass('open');
                 $(submenu).toggleClass('open');
             });
         };
@@ -537,84 +615,6 @@ var sam = new function() {
                 $(this).toggleClass('open');
                 $(burgerBody).toggleClass('open');
             });
-        };
-    };
-    this.modal = new function() {
-        var that = this;
-
-        this.state = {
-            'isActive': false,
-            'popup'   : null,
-            'btn'     : null
-        };
-
-        this.init = function() {
-            self.body.on('click', 'a[data-toggle="modal"], button.js-popup-button', function() {
-                $(this).toggleClass('active');
-
-                var $popup = $(this).hasClass('js-popup-button') ? $($(this).data('target')) : $($(this).attr('href'));
-                if ($popup.length) {
-                    if (that.state.isActive) {
-                        that.close(that.state.popup, that.state.btn);
-                    }
-                    that.open($popup, $(this));
-                }
-            });
-        };
-
-        this.open = function($popup, $btn) {
-            let popupId = $popup.attr('id');
-
-            that.overlay.open();
-            $popup.addClass('active').addClass('open');
-            $btn.addClass('active');
-
-            that.overlay.$overlay.click(function(event) {
-                event = event || window.event;
-                let $parent = $(event.target).parents('#' + popupId);
-                if ($parent.length) {
-                    return;
-                }
-
-                that.close($popup, $btn);
-            });
-
-            $popup.find('.js-close').click(function() {
-                that.close($popup, $btn);
-            });
-
-            that.state.isActive = true;
-            that.state.popup = $popup;
-            that.state.btn = $btn;
-        };
-
-        this.close = function($popup, $btn) {
-            that.overlay.close();
-            $popup.removeClass('active').removeClass('open');
-            $btn.removeClass('active');
-
-            that.overlay.$overlay.off('click');
-            $popup.find('.js-close').off('click');
-
-            that.state.isActive = false;
-            that.state.popup = null;
-            that.state.btn = null;
-        };
-
-        this.overlay = new function() {
-            var context = this;
-
-            this.$overlay = $('.js-overlay');
-
-            this.open = function() {
-                context.$overlay.show();
-                self.body.addClass('fixed');
-            };
-
-            this.close = function() {
-                context.$overlay.hide();
-                self.body.removeClass('fixed');
-            };
         };
     };
     this.showPassword = new function() {
