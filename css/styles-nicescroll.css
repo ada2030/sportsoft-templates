@@ -1,0 +1,9 @@
+.scroll {
+    height: 360px;
+}
+
+.scroll div#ascrail2000 {
+    background-color: #000000;
+    border-radius: 1px;
+    overflow: hidden;
+}

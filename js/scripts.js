@@ -16,12 +16,14 @@ var sam = new function() {
         self.tabsMobile.init();
         self.printTable.init();
         self.tinySlider.init();
+        self.nicescrollBlock.init();
+        self.nicescrollBody.init();
         self.select.init();
-        self.cookieDisclaimer.init();
         self.dropdown.init();
         self.filterBurger.init();
         self.showPassword.init();
         self.addMask.init();
+        self.cookieDisclaimer.init();
     };
     this.modal = new function() {
         var that = this;
@@ -384,22 +386,61 @@ var sam = new function() {
 
         };
     };
-    this.cookieDisclaimer = new function() {
+    this.nicescrollBlock = new function() {
+        this.init = function() {
+            var nicescrollMain = $('.js-nicescroll-main');
+            var nicescrollWrap = $('.js-nicescroll-wrap');
+            $(nicescrollMain).niceScroll(nicescrollWrap, {
+                cursorcolor          : '#C43323',
+                cursorwidth          : '5px',
+                cursorborder         : false,
+                cursorborderradius   : '1px',
+                nativeparentscrolling: false,
+                cursorminheight      : 88,
+                cursorfixedheight    : 88,
+                horizrailenabled     : false,
+                autohidemode         : false
+            });
+        };
+    };
+    this.nicescrollBody = new function() {
         var that = this;
 
-        var cookieName = 'show-banner-cookies';
+        this.width = 1200;
 
         this.init = function() {
-            var cookie = $.cookie(cookieName);
-            if (!cookie) {
-                setTimeout(function() {
-                    $(".js-cookie-banner").toggle(true, 300);
-                }, 500);
-            }
-            $(".js-cookie-banner-accept").click(function() {
-                $.cookie(cookieName, 1, {expires: 30, path: '/'});
-                $(".js-cookie-banner").slideUp(300);
+            $('.js-nicescroll').each(function() {
+                if ($(this).data('height')) {
+                    $(this).niceScroll(that.getOps());
+                }
             });
+
+            that.initBody();
+            $(window).resize(function() {
+                sam.body.getNiceScroll().remove();
+                that.initBody();
+            });
+        };
+
+        this.initBody = function() {
+            if (self.body.outerWidth() > that.width) {
+                self.body.niceScroll(that.getOps());
+            }
+        };
+
+        this.getOps = function() {
+            return {
+                'cursorcolor'       : '#000000',
+                'cursoropacitymax'  : 0.3,
+                'cursoropacitymin'  : 0.3,
+                'cursorwidth'       : '4px',
+                'cursorborder'      : 'none',
+                'cursorborderradius': '3px',
+                'zindex'            : '998',
+                'scrollspeed'       : '0',
+                'touchbehavior'     : sam.isTablet,
+                'railpadding'       : {top: 4, right: 2, left: 0, bottom: 4}
+            };
         };
     };
     this.dropdown = new function() {
@@ -651,6 +692,24 @@ var sam = new function() {
                 if ($(this).val() === '__.__.____') {
                     $(this).get(0).setSelectionRange(0, 0);
                 }
+            });
+        };
+    };
+    this.cookieDisclaimer = new function() {
+        var that = this;
+
+        var cookieName = 'show-banner-cookies';
+
+        this.init = function() {
+            var cookie = $.cookie(cookieName);
+            if (!cookie) {
+                setTimeout(function() {
+                    $(".js-cookie-banner").toggle(true, 300);
+                }, 500);
+            }
+            $(".js-cookie-banner-accept").click(function() {
+                $.cookie(cookieName, 1, {expires: 30, path: '/'});
+                $(".js-cookie-banner").slideUp(300);
             });
         };
     };
