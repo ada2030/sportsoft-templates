@@ -16,12 +16,13 @@ var sam = new function() {
         self.tabsMobile.init();
         self.printTable.init();
         self.tinySlider.init();
+        self.cards.init();
+        self.showPassword.init();
         self.nicescrollBlock.init();
         self.nicescrollBody.init();
         self.select.init();
         self.dropdown.init();
         self.filterBurger.init();
-        self.showPassword.init();
         self.addMask.init();
         self.cookieDisclaimer.init();
     };
@@ -386,6 +387,48 @@ var sam = new function() {
 
         };
     };
+    this.cards = new function() {
+        var that = this;
+
+        this.init = function() {
+            var smallCards = $('.small__link');
+            var bigCards = $('.big__item');
+
+            $(smallCards).click(function() {
+                event.preventDefault();
+                var activeCard = $(this);
+                $(smallCards).parent().removeClass('small__item--card')
+                $(smallCards).parent().removeClass('small__item--next')
+                $(this).parent().addClass('small__item--card')
+                $(this).parent().next().addClass('small__item--next')
+                $(bigCards).each(function() {
+                    $(this).removeClass('big__item--show');
+                    if (activeCard.attr('href') === $(this).attr('data-id')) {
+                        $(this).addClass('big__item--show');
+                    }
+                });
+            });
+        };
+    };
+    this.showPassword = new function() {
+        var that = this;
+
+        this.init = function() {
+            var showButton = $('.form__show');
+
+            $(showButton).click(function() {
+                var passwordInput = $(this).siblings('.form__input');
+                event.preventDefault();
+                if ($(passwordInput).attr('type') === 'password'){
+                    $(passwordInput).attr('type', 'text');
+                    $(this).addClass('active');
+                } else {
+                    $(passwordInput).attr('type', 'password');
+                    $(this).removeClass('active');
+                }
+            });
+        };
+    };
     this.nicescrollBlock = new function() {
         this.init = function() {
             var nicescrollMain = $('.js-nicescroll-main');
@@ -655,25 +698,6 @@ var sam = new function() {
                 var burgerBody = $(this).siblings('.js-burger-body');
                 $(this).toggleClass('open');
                 $(burgerBody).toggleClass('open');
-            });
-        };
-    };
-    this.showPassword = new function() {
-        var that = this;
-
-        this.init = function() {
-            var showButton = $('.form__show');
-
-            $(showButton).click(function() {
-                var passwordInput = $(this).siblings('.form__input');
-                event.preventDefault();
-                if ($(passwordInput).attr('type') === 'password'){
-                    $(passwordInput).attr('type', 'text');
-                    $(this).addClass('active');
-                } else {
-                    $(passwordInput).attr('type', 'password');
-                    $(this).removeClass('active');
-                }
             });
         };
     };
