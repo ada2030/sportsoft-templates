@@ -10,99 +10,19 @@ var sam = new function() {
     self.isSafari = navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1 &&  navigator.userAgent.indexOf('Android') == -1;
 
     self.init = function() {
-        self.modal.init();
         self.menu.init();
         self.tabs.init();
         self.tabsMobile.init();
+        self.modal.init();
+        self.showPassword.init();
         self.printTable.init();
         self.tinySlider.init();
-        self.cards.init();
-        self.showPassword.init();
-        self.nicescrollBlock.init();
-        self.nicescrollBody.init();
         self.select.init();
         self.dropdown.init();
         self.filterBurger.init();
-        self.addMask.init();
-        self.cookieDisclaimer.init();
-    };
-    this.modal = new function() {
-        var that = this;
-
-        this.state = {
-            'isActive': false,
-            'popup'   : null,
-            'btn'     : null
-        };
-
-        this.init = function() {
-            self.body.on('click', 'a[data-toggle="modal"], button.js-popup-button', function() {
-                $(this).toggleClass('active');
-
-                var $popup = $(this).hasClass('js-popup-button') ? $($(this).data('target')) : $($(this).attr('href'));
-                if ($popup.length) {
-                    if (that.state.isActive) {
-                        that.close(that.state.popup, that.state.btn);
-                    }
-                    that.open($popup, $(this));
-                }
-            });
-        };
-
-        this.open = function($popup, $btn) {
-            let popupId = $popup.attr('id');
-
-            that.overlay.open();
-            $popup.addClass('active').addClass('open');
-            $btn.addClass('active');
-
-            that.overlay.$overlay.click(function(event) {
-                event = event || window.event;
-                let $parent = $(event.target).parents('#' + popupId);
-                if ($parent.length) {
-                    return;
-                }
-
-                that.close($popup, $btn);
-            });
-
-            $popup.find('.js-close').click(function() {
-                that.close($popup, $btn);
-            });
-
-            that.state.isActive = true;
-            that.state.popup = $popup;
-            that.state.btn = $btn;
-        };
-
-        this.close = function($popup, $btn) {
-            that.overlay.close();
-            $popup.removeClass('active').removeClass('open');
-            $btn.removeClass('active');
-
-            that.overlay.$overlay.off('click');
-            $popup.find('.js-close').off('click');
-
-            that.state.isActive = false;
-            that.state.popup = null;
-            that.state.btn = null;
-        };
-
-        this.overlay = new function() {
-            var context = this;
-
-            this.$overlay = $('.js-overlay');
-
-            this.open = function() {
-                context.$overlay.show();
-                self.body.addClass('fixed');
-            };
-
-            this.close = function() {
-                context.$overlay.hide();
-                self.body.removeClass('fixed');
-            };
-        };
+        self.cards.init();
+        self.nicescrollBlock.init();
+        self.nicescrollBody.init();
     };
     this.menu = new function() {
         var that = this;
@@ -239,6 +159,103 @@ var sam = new function() {
                 });
             });
         }
+    };
+    this.modal = new function() {
+        var that = this;
+
+        this.state = {
+            'isActive': false,
+            'popup'   : null,
+            'btn'     : null
+        };
+
+        this.init = function() {
+            self.body.on('click', 'a[data-toggle="modal"], button.js-popup-button', function() {
+                $(this).toggleClass('active');
+
+                var $popup = $(this).hasClass('js-popup-button') ? $($(this).data('target')) : $($(this).attr('href'));
+                if ($popup.length) {
+                    if (that.state.isActive) {
+                        that.close(that.state.popup, that.state.btn);
+                    }
+                    that.open($popup, $(this));
+                }
+            });
+        };
+
+        this.open = function($popup, $btn) {
+            let popupId = $popup.attr('id');
+
+            that.overlay.open();
+            $popup.addClass('active').addClass('open');
+            $btn.addClass('active');
+
+            that.overlay.$overlay.click(function(event) {
+                event = event || window.event;
+                let $parent = $(event.target).parents('#' + popupId);
+                if ($parent.length) {
+                    return;
+                }
+
+                that.close($popup, $btn);
+            });
+
+            $popup.find('.js-close').click(function() {
+                that.close($popup, $btn);
+            });
+
+            that.state.isActive = true;
+            that.state.popup = $popup;
+            that.state.btn = $btn;
+        };
+
+        this.close = function($popup, $btn) {
+            that.overlay.close();
+            $popup.removeClass('active').removeClass('open');
+            $btn.removeClass('active');
+
+            that.overlay.$overlay.off('click');
+            $popup.find('.js-close').off('click');
+
+            that.state.isActive = false;
+            that.state.popup = null;
+            that.state.btn = null;
+        };
+
+        this.overlay = new function() {
+            var context = this;
+
+            this.$overlay = $('.js-overlay');
+
+            this.open = function() {
+                context.$overlay.show();
+                self.body.addClass('fixed');
+            };
+
+            this.close = function() {
+                context.$overlay.hide();
+                self.body.removeClass('fixed');
+            };
+        };
+    };
+    this.showPassword = new function() {
+        var that = this;
+
+        this.init = function() {
+            var showButton = $('.form__show');
+
+            $(showButton).click(function() {
+                var passwordInput = $(this).siblings('.form__input');
+                event.preventDefault();
+                if ($(passwordInput).attr('type') === 'password'){
+                    $(passwordInput).attr('type', 'text');
+                    $(this).addClass('active');
+                } else {
+                    $(passwordInput).attr('type', 'password');
+                    $(this).removeClass('active');
+                }
+            });
+        };
     };
     this.printTable = new function() {
         this.init = function() {
@@ -385,105 +402,6 @@ var sam = new function() {
                 $(this).samselect($(this).data());
             });
 
-        };
-    };
-    this.cards = new function() {
-        var that = this;
-
-        this.init = function() {
-            var smallCards = $('.small__link');
-            var bigCards = $('.big__item');
-
-            $(smallCards).click(function() {
-                event.preventDefault();
-                var activeCard = $(this);
-                $(smallCards).parent().removeClass('small__item--card')
-                $(smallCards).parent().removeClass('small__item--next')
-                $(this).parent().addClass('small__item--card')
-                $(this).parent().next().addClass('small__item--next')
-                $(bigCards).each(function() {
-                    $(this).removeClass('big__item--show');
-                    if (activeCard.attr('href') === $(this).attr('data-id')) {
-                        $(this).addClass('big__item--show');
-                    }
-                });
-            });
-        };
-    };
-    this.showPassword = new function() {
-        var that = this;
-
-        this.init = function() {
-            var showButton = $('.form__show');
-
-            $(showButton).click(function() {
-                var passwordInput = $(this).siblings('.form__input');
-                event.preventDefault();
-                if ($(passwordInput).attr('type') === 'password'){
-                    $(passwordInput).attr('type', 'text');
-                    $(this).addClass('active');
-                } else {
-                    $(passwordInput).attr('type', 'password');
-                    $(this).removeClass('active');
-                }
-            });
-        };
-    };
-    this.nicescrollBlock = new function() {
-        this.init = function() {
-            var nicescrollMain = $('.js-nicescroll-main');
-            var nicescrollWrap = $('.js-nicescroll-wrap');
-            $(nicescrollMain).niceScroll(nicescrollWrap, {
-                cursorcolor          : '#C43323',
-                cursorwidth          : '5px',
-                cursorborder         : false,
-                cursorborderradius   : '1px',
-                nativeparentscrolling: false,
-                cursorminheight      : 88,
-                cursorfixedheight    : 88,
-                horizrailenabled     : false,
-                autohidemode         : false
-            });
-        };
-    };
-    this.nicescrollBody = new function() {
-        var that = this;
-
-        this.width = 1200;
-
-        this.init = function() {
-            $('.js-nicescroll').each(function() {
-                if ($(this).data('height')) {
-                    $(this).niceScroll(that.getOps());
-                }
-            });
-
-            that.initBody();
-            $(window).resize(function() {
-                sam.body.getNiceScroll().remove();
-                that.initBody();
-            });
-        };
-
-        this.initBody = function() {
-            if (self.body.outerWidth() > that.width) {
-                self.body.niceScroll(that.getOps());
-            }
-        };
-
-        this.getOps = function() {
-            return {
-                'cursorcolor'       : '#000000',
-                'cursoropacitymax'  : 0.3,
-                'cursoropacitymin'  : 0.3,
-                'cursorwidth'       : '4px',
-                'cursorborder'      : 'none',
-                'cursorborderradius': '3px',
-                'zindex'            : '998',
-                'scrollspeed'       : '0',
-                'touchbehavior'     : sam.isTablet,
-                'railpadding'       : {top: 4, right: 2, left: 0, bottom: 4}
-            };
         };
     };
     this.dropdown = new function() {
@@ -701,40 +619,88 @@ var sam = new function() {
             });
         };
     };
-    this.addMask = new function() {
+    this.cards = new function() {
         var that = this;
 
         this.init = function() {
-            var phoneInput = $('.js-phone-input');
-            var birthdateInput = $('.js-birthdate-input');
-            $(phoneInput).mask('+7 (999) 999-99-99').on('click', function () {
-                if ($(this).val() === '+7 (___) ___-__-__') {
-                    $(this).get(0).setSelectionRange(4, 4);
-                }
-            });
-            $(birthdateInput).mask("99.99.9999").on('click', function () {
-                if ($(this).val() === '__.__.____') {
-                    $(this).get(0).setSelectionRange(0, 0);
-                }
+            var smallCards = $('.small__link');
+            var bigCards = $('.big__item');
+
+            $(smallCards).click(function() {
+                event.preventDefault();
+                var activeCard = $(this);
+                $(smallCards).parent().removeClass('small__item--card')
+                $(smallCards).parent().removeClass('small__item--next')
+                $(this).parent().addClass('small__item--card')
+                $(this).parent().next().addClass('small__item--next')
+                $(bigCards).each(function() {
+                    $(this).removeClass('big__item--show');
+                    if (activeCard.attr('href') === $(this).attr('data-id')) {
+                        $(this).addClass('big__item--show');
+                    }
+                });
             });
         };
     };
-    this.cookieDisclaimer = new function() {
+    this.nicescrollBlock = new function() {
         var that = this;
 
-        var cookieName = 'show-banner-cookies';
+        this.init = function() {
+            $('.js-nicescroll-main').niceScroll(that.getOps());
+        };
+
+        this.getOps = function() {
+            return {
+                'cursorcolor'          : '#C5112C',
+                'cursorwidth'          : '10px',
+                'cursorborder'         : false,
+                'cursorborderradius'   : '100px',
+                'nativeparentscrolling': false,
+                'cursorminheight'      : 72,
+                'cursorfixedheight'    : 72,
+                'horizrailenabled'     : false,
+                'autohidemode'         : false
+            };
+        };
+    };
+    this.nicescrollBody = new function() {
+        var that = this;
+
+        this.width = 1200;
 
         this.init = function() {
-            var cookie = $.cookie(cookieName);
-            if (!cookie) {
-                setTimeout(function() {
-                    $(".js-cookie-banner").toggle(true, 300);
-                }, 500);
-            }
-            $(".js-cookie-banner-accept").click(function() {
-                $.cookie(cookieName, 1, {expires: 30, path: '/'});
-                $(".js-cookie-banner").slideUp(300);
+            $('.js-nicescroll').each(function() {
+                if ($(this).data('height')) {
+                    $(this).niceScroll(that.getOps());
+                }
             });
+
+            that.initBody();
+            $(window).resize(function() {
+                sam.body.getNiceScroll().remove();
+                that.initBody();
+            });
+        };
+
+        this.initBody = function() {
+            if (self.body.outerWidth() > that.width) {
+                self.body.niceScroll(that.getOps());
+            }
+        };
+
+        this.getOps = function() {
+            return {
+                'cursorcolor'       : '#000000',
+                'cursoropacitymax'  : 0.3,
+                'cursoropacitymin'  : 0.3,
+                'cursorwidth'       : '4px',
+                'cursorborder'      : 'none',
+                'cursorborderradius': '3px',
+                'zindex'            : '998',
+                'scrollspeed'       : '0',
+                'touchbehavior'     : sam.isTablet,
+                'railpadding'       : {top: 4, right: 2, left: 0, bottom: 4}
+            };
         };
     };
 };
