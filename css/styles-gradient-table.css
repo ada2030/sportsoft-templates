@@ -1,0 +1,20 @@
+.table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table__td {
+    padding: 10px;
+    border: none;
+}
+
+.table__th {
+    padding: 10px;
+    border: none;
+}
+
+.table__tbody {
+    background: linear-gradient(288.27deg, #8360C3 1.27%, #8361C3 15.98%, #2EBF91 100%);
+}
