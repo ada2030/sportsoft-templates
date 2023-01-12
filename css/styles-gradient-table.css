@@ -15,6 +15,12 @@
     border: none;
 }
 
-.table__tbody {
-    background: linear-gradient(288.27deg, #8360C3 1.27%, #8361C3 15.98%, #2EBF91 100%);
+.table-tbody .table__tbody {
+    background-image: linear-gradient(288.27deg, #8360C3 1.27%, #8361C3 15.98%, #2EBF91 100%);
+    background-attachment: fixed;
+}
+
+.table-row .table__tbody .table__tr {
+    background-image: linear-gradient(288.27deg, #8360C3 1.27%, #8361C3 15.98%, #2EBF91 100%);
+    background-attachment: fixed;
 }
