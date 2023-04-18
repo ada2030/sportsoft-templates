@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="utf-8">
+    <title>Шаблоны SportSoft</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+<input type="text" placeholder="Ведите событие">
+<p><input type="text" placeholder="Ведите категорию" list="categoryList"></p>
+<datalist id="categoryList">
+    <option value="Личное"></option>
+    <option value="По работе"></option>
+</datalist>
+<p>Дата и время начала</p>
+<p><input type="date" id="dateStartInput"></p>
+<p><input type="time" id="timeStartInput"></p>
+<p>Дата и время конца</p>
+<p><input type="date" id="dateEndInput"></p>
+<p><input type="time" id="timeEndInput"></p>
+<button id="addBtn">Добавить</button>
+<p><button id="sortBtn">Сортировать</button></p>
+<ul></ul>
+<table id="todoTable">
+    <tr>
+        <td></td>
+        <td>Дата Начала</td>
+        <td>Время Начала</td>
+        <td>Событие</td>
+        <td>
+            <select id="categoryFilter">
+            </select>
+        </td>
+        <td></td>
+    </tr>
+</table>
+<br>
+<div id='calendar'></div>
+<br>
+<script src="js/todo.js"></script>
+</body>
+</html>
