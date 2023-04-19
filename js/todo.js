@@ -6,14 +6,14 @@ function todoMain() {
   let inputElem,
     inputElem2,
     dateStartInput,
-    timeStartInput,
     dateEndInput,
-    timeEndInput,
     addButton,
     sortButton,
     selectElem,
     todoList = [],
-    calendar;
+    calendar,
+    calendarForm,
+    formClose;
   
   getElements();
   addListeners();
@@ -26,12 +26,12 @@ function todoMain() {
     inputElem = document.getElementsByTagName("input")[0];
     inputElem2 = document.getElementsByTagName("input")[1];
     dateStartInput = document.getElementById("dateStartInput");
-    timeStartInput = document.getElementById("timeStartInput");
     dateEndInput = document.getElementById("dateEndInput");
-    timeEndInput = document.getElementById("timeEndInput");
     addButton = document.getElementById("addBtn");
     sortButton = document.getElementById("sortBtn");
     selectElem = document.getElementById("categoryFilter");
+    calendarForm = document.getElementById("form");
+    formClose = document.getElementById("form-close");
   }
   
   function addListeners() {
@@ -41,6 +41,7 @@ function todoMain() {
   }
   
   function addEntry(event) {
+    event.preventDefault();
     
     let inputValue = inputElem.value;
     inputElem.value = "";
@@ -50,24 +51,16 @@ function todoMain() {
     
     let dateStartValue = dateStartInput.value;
     dateStartInput.value = "";
-    
-    let timeStartValue = timeStartInput.value;
-    timeStartInput.value = "";
   
     let dateEndValue = dateEndInput.value;
     dateEndInput.value = "";
-  
-    let timeEndValue = timeEndInput.value;
-    timeEndInput.value = "";
     
     let obj = {
       id: _uuid(),
       todo: inputValue,
       category: inputValue2,
       dateStart: dateStartValue,
-      timeStart: timeStartValue,
       dateEnd: dateEndValue,
-      timeEnd: timeEndValue,
       done: false,
     };
     
@@ -154,7 +147,7 @@ function todoMain() {
     })
   }
   
-  function rendowRow({ todo: inputValue, category: inputValue2, id, dateStart, timeStart, dateEnd, timeEnd, done }) {
+  function rendowRow({ todo: inputValue, category: inputValue2, id, dateStart, dateEnd, done }) {
     
     let table = document.getElementById("todoTable");
     
@@ -179,10 +172,6 @@ function todoMain() {
     
     dateElem.innerText = formattedDate;
     trElem.appendChild(dateElem);
-    
-    let timeElem = document.createElement("td");
-    timeElem.innerText = timeStart;
-    trElem.appendChild(timeElem);
     
     let tdElem2 = document.createElement("td");
     tdElem2.innerText = inputValue;
@@ -212,8 +201,8 @@ function todoMain() {
     addEvent({
       id: id,
       title: inputValue,
-      start: new Date(dateStart + 'T' + timeStart),
-      end: new Date(dateEnd + 'T' + timeEnd),
+      start: new Date(dateStart),
+      end: new Date(dateEnd),
     });
     
     function deleteItem() {
@@ -273,7 +262,10 @@ function todoMain() {
   
     calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-      initialDate: '2023-03-07',
+      initialDate: moment().format("YYYY-MM-DD"),
+      validRange: {
+        start: moment().format("YYYY-MM-DD")
+      },
       aspectRatio: 3,
       headerToolbar: {
         left: 'prevYear,prev,next,nextYear today',
@@ -293,6 +285,34 @@ function todoMain() {
       themeSystem: 'bootstrap4',
       stickyHeaderDates: true,
       stickyFooterScrollbar: true,
+      slotEventOverlap: false,
+      allDaySlot: false,
+      scrollTime: '07:00:00',
+      navLinks: true,
+      weekNumbers: true,
+      weekText: "Week",
+      weekNumberFormat: {
+        week: 'short'
+      },
+      selectable: true,
+      selectMirror: true,
+      dateClick: function(info) {
+        calendarForm.style.display="block";
+        console.log(info);
+        formClose.addEventListener('click', function (event) {
+          event.preventDefault();
+          calendarForm.style.display="none";
+        })
+      },
+      select: function(info) {
+        calendarForm.style.display="block";
+        dateStartInput.value=new Date(info.startStr).toISOString().slice(0, -8);
+        dateEndInput.value=new Date(info.endStr).toISOString().slice(0, -8);
+        formClose.addEventListener('click', function (event) {
+          event.preventDefault();
+          calendarForm.style.display="none";
+        })
+      },
       events: [],
     });
   
@@ -301,5 +321,6 @@ function todoMain() {
   
   function addEvent(event) {
     calendar.addEvent(event)
+    calendarForm.style.display="none";
   }
 }

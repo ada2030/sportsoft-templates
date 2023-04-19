@@ -10,3 +10,32 @@ td{
 body {
   padding: 30px;
 }
+
+.form {
+  padding: 20px;
+  position: fixed;
+  max-width: 380px;
+  width: 100%;
+  left: calc(50vw - 190px);
+  top: 115px;
+  max-height: calc(100vh - 115px);
+  z-index: 6;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0, 0.1), 0 5px 25px rgba(0,0,0, 0.2);
+  border-radius: 15px;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: black;
+}
+
+.form__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
