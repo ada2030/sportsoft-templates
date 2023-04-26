@@ -39,3 +39,7 @@ body {
   top: 10px;
   right: 10px;
 }
+
+.calendar-free .fc-view-harness {
+  background-color: orange;
+}

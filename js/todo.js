@@ -8,7 +8,6 @@ function todoMain() {
     dateStartInput,
     dateEndInput,
     addButton,
-    sortButton,
     selectElem,
     todoList = [],
     calendar,
@@ -28,7 +27,6 @@ function todoMain() {
     dateStartInput = document.getElementById("dateStartInput");
     dateEndInput = document.getElementById("dateEndInput");
     addButton = document.getElementById("addBtn");
-    sortButton = document.getElementById("sortBtn");
     selectElem = document.getElementById("categoryFilter");
     calendarForm = document.getElementById("form");
     formClose = document.getElementById("form-close");
@@ -36,7 +34,6 @@ function todoMain() {
   
   function addListeners() {
     addButton.addEventListener("click", addEntry, false);
-    sortButton.addEventListener("click", sortEntry, false);
     selectElem.addEventListener("change", filterEntries, false);
   }
   
@@ -54,6 +51,14 @@ function todoMain() {
   
     let dateEndValue = dateEndInput.value;
     dateEndInput.value = "";
+
+    let color;
+
+    if (inputValue2 === 'Поле 1') {
+      color = "#000000";
+    } else if (inputValue2 === 'Поле 2') {
+      color = "#ff0000";
+    }
     
     let obj = {
       id: _uuid(),
@@ -61,6 +66,7 @@ function todoMain() {
       category: inputValue2,
       dateStart: dateStartValue,
       dateEnd: dateEndValue,
+      color: color,
       done: false,
     };
     
@@ -131,23 +137,17 @@ function todoMain() {
   function load() {
     let retrieved = localStorage.getItem("todoList");
     todoList = JSON.parse(retrieved);
-    //console.log(typeof todoList)
     if (todoList == null)
       todoList = [];
   }
   
   function renderRows() {
     todoList.forEach(todoObj => {
-      
-      
-      // let todoEntry = todoObj["todo"];
-      // let key = "category";
-      // let todoCategory = todoObj[key];
       rendowRow(todoObj);
     })
   }
   
-  function rendowRow({ todo: inputValue, category: inputValue2, id, dateStart, dateEnd, done }) {
+  function rendowRow({ todo: inputValue, category: inputValue2, id, dateStart, dateEnd, color, done }) {
     
     let table = document.getElementById("todoTable");
     
@@ -203,6 +203,7 @@ function todoMain() {
       title: inputValue,
       start: new Date(dateStart),
       end: new Date(dateEnd),
+      color: color
     });
     
     function deleteItem() {
@@ -240,23 +241,6 @@ function todoMain() {
     });
   }
   
-  function sortEntry() {
-    todoList.sort((a, b) => {
-      let aDate = Date.parse(a.date);
-      let bDate = Date.parse(b.date);
-      return aDate - bDate;
-    });
-    
-    save();
-    
-    let trElems = document.getElementsByTagName("tr");
-    for(let i = trElems.length - 1; i > 0; i--){
-      trElems[i].remove();
-    }
-    
-    renderRows();
-  }
-  
   function initCalendar() {
     var calendarEl = document.getElementById('calendar');
   
@@ -267,13 +251,21 @@ function todoMain() {
         start: moment().format("YYYY-MM-DD")
       },
       aspectRatio: 3,
+      customButtons: {
+        myCustomButton: {
+          text: 'Свободные часы',
+          click: function() {
+            calendarEl.classList.toggle("calendar-free");
+          }
+        }
+      },
       headerToolbar: {
-        left: 'prevYear,prev,next,nextYear today',
+        left: 'prevYear,prev,next,nextYear today myCustomButton',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
       footerToolbar: {
-        left: 'prevYear,prev,next,nextYear today',
+        left: 'prevYear,prev,next,nextYear today myCustomButton',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
@@ -298,7 +290,6 @@ function todoMain() {
       selectMirror: true,
       dateClick: function(info) {
         calendarForm.style.display="block";
-        console.log(info);
         formClose.addEventListener('click', function (event) {
           event.preventDefault();
           calendarForm.style.display="none";
@@ -314,6 +305,7 @@ function todoMain() {
         })
       },
       events: [],
+      locale: 'ru',
     });
   
     calendar.render();
