@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Шаблоны SportSoft</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="plugins/tiny-slider/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css">
+    <link href="css/styles-slider.css" rel="stylesheet">
+    <link href="css/slider-zoom.css" rel="stylesheet">
+</head>
+<body>
+<header class="header"></header>
+<main class="main">
+    <div class="slider slider--green">
+        <!--Контентная часть-->
+        <ul class="slider__list js-tiny-slider"
+            data-controls-container=".js-slider-controls"
+            data-controls="true"
+            data-nav="true"
+            data-nav-container=".js-slider-nav"
+            data-items="1"
+            data-loop="true"
+            data-autoplay="true"
+            data-autoplay-timeout="5000"
+            data-autoplay-over-pause="true"
+            data-speed="1000"
+            data-mouse-drag="true"
+            data-mode="carousel"
+        >
+            <li class="slider__item">
+                <div class="grid__item small--one-half medium-up--one-fifth">
+                    <a href="https://cdn.shopify.com/s/files/1/0938/8938/products/ADYSB00020_MUL_FRT4_1800-2400_1024x1024.jpeg" class="product-card" data-fancybox="product-card" data-qv-id="qv-1">
+                        <div class="product-card__image-wrapper">
+                            <img src="//cdn.shopify.com/s/files/1/0938/8938/products/ADYSB00020_MUL_FRT4_1800-2400_480x480.jpeg" alt="Tone Snowboard" class="product-card__image">
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="slider__item">
+                <div class="grid__item small--one-half medium-up--one-fifth">
+                    <a href="https://cdn.shopify.com/s/files/1/0938/8938/products/Untitled-112_copy_copy_copy_1024x1024.jpeg" class="product-card" data-fancybox="product-card" data-qv-id="qv-2">
+                        <div class="product-card__image-wrapper">
+                            <img src="https://cdn.shopify.com/s/files/1/0938/8938/products/Untitled-112_copy_copy_copy_1024x1024.jpeg" class="product-card__image">
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="slider__item">
+                <div class="grid__item small--one-half medium-up--one-fifth">
+                    <a href="https://cdn.shopify.com/s/files/1/0938/8938/products/Untitled-11_copy_copy_copy_1024x1024.jpeg" class="product-card" data-fancybox="product-card" data-qv-id="qv-3">
+                        <div class="product-card__image-wrapper">
+                            <img src="//cdn.shopify.com/s/files/1/0938/8938/products/Untitled-11_copy_copy_copy_480x480.jpeg" class="product-card__image">
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <!--Навигационная часть-->
+        <ul class="slider__nav js-slider-nav">
+            <li class="slider__nav-item"></li>
+            <li class="slider__nav-item"></li>
+            <li class="slider__nav-item"></li>
+        </ul>
+        <!--Управляемая часть-->
+        <div class="slider__arrows-block js-slider-controls">
+            <a class="slider__arrows-link slider__arrows-link--left">
+                <svg class="slider__arrow" width="20" height="20">
+                    <use xlink:href="img/sprite.svg#slider-arrow"></use>
+                </svg>
+            </a>
+            <a class="slider__arrows-link slider__arrows-link--right">
+                <svg class="slider__arrow" width="20" height="20">
+                    <use xlink:href="img/sprite.svg#slider-arrow"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+</main>
+<footer class="footer"></footer>
+<script src="plugins/jquery-3.6.0.js"></script>
+<script src='plugins/tiny-slider/tiny-slider.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+<script src='js/scripts.js'></script>
+<script src='plugins/jquery.nicescroll/jquery.nicescroll.min.js'></script>
+</body>
+</html>

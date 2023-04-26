@@ -1,0 +1,285 @@
+
+/*
+
+  Step #1 - Styling the page and item grid
+  ========================================
+
+*/
+
+body, html {
+  background-color: #f7f7f7;
+}
+
+.grid {
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 20px 0;
+  background: #fff;
+}
+
+.medium-up--one-fifth {
+  float: left;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.product-card {
+  position: relative;
+  display: block;
+  background-color: #fff;
+  text-align: center;
+  padding: 25px;
+  border-color: #f7f7f7;
+  border-style: solid;
+  border-width: 0 0 1px 1px;
+  color: #666;
+  z-index: 1;
+  outline: none;
+}
+
+.product-card__image-wrapper {
+  height: 235px;
+  margin-bottom: 60px;
+}
+
+.product-card__image {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  max-height: 100%;
+  max-width: 100%;
+  border: 0;
+}
+
+.product-card__info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 12.5px 20px;
+}
+
+.product-card__overlay {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.06);
+  transition: all 0.15s ease-in;
+}
+
+.product-card:hover .product-card__overlay, .product-card:focus .product-card__overlay {
+  visibility: visible;
+  opacity: 1;
+  outline: none;
+}
+
+.btn {
+  font-size: 0.8125em;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 15px 45px;
+  transition: color 0.1s ease-in,background-color 0.1s ease-in;
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #006eff;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.btn:active, .btn:focus {
+  background-color: adaptive-color(adaptive-color(#006eff, 10%), 10%);
+  color: #fff;
+}
+
+.product-card__overlay-btn {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-45%);
+  -webkit-transform: translateY(-45%);
+  transform: translateY(-45%);
+  transition: all 0.15s ease-in;
+}
+
+.product-card:hover .product-card__overlay-btn {
+  -ms-transform: translateY(-85%);
+  -webkit-transform: translateY(-85%);
+  transform: translateY(-85%);
+}
+
+
+/*
+
+  Step #2 - Styling the modal
+  ===========================
+
+*/
+
+.qv-container .fancybox-outer {
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.qv-container .fancybox-inner,
+.qv-container form {
+  width: 75vw;
+  max-width: 800px;
+  background: #fff;
+}
+
+.qv-container .fancybox-inner {
+  position: relative;
+  height: 75vh;
+  margin: 20px auto 0 auto;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.qv-container form {
+  margin: 0 auto 20px auto;
+  border-top: 8px solid #f4f4f4;
+}
+
+
+
+/*
+
+  Step #3 - Styling product form
+  ==============================
+
+*/
+
+.product-form {
+  display: none;
+  padding: 20px 40px;
+  color: #777;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.product-form h1 {
+  text-transform: uppercase;
+  color: #222;
+  font-size: 26px;
+}
+
+.product-form__input {
+  background-color: #f4f4f4;
+  color: #333;
+  border: 0;
+  width: 100%;
+  padding-top: 13px;
+  padding-left: 15px;
+  padding-bottom: 13px;
+  margin-bottom: 10px;
+}
+
+.product-form .btn {
+  width: 100%;
+  min-height: 48px;
+}
+
+.product-form ul {
+  padding: 0;
+  margin: 20px 0 10px 20px;
+}
+
+.product-form ul li {
+  line-height: 1.8;
+}
+
+.product-single__price {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: block;
+  font-size: 1.25em;
+  color: #666;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.qv-close {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  background: #F0F0F0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font: normal 14px Arial;
+  color: #222;
+  text-indent: -99999px;
+  transition: all .2s;
+  z-index: 99997;
+}
+
+.qv-close:hover {
+  background: #e4e4e4;
+}
+
+.qv-close::before,
+.qv-close::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 22px;
+  width: 1px;
+  height: 18px;
+  background-color: #222;
+}
+
+.qv-close:before {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.qv-close:after {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*
+
+  Step #4 - Add fade animation
+  ============================
+
+*/
+
+.qv-container .fancybox-outer {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.fancybox-is-open.qv-container .fancybox-outer {
+  opacity: 1;
+}
