@@ -306,6 +306,10 @@ function todoMain() {
       },
       events: [],
       locale: 'ru',
+      eventClick: function(info) {
+        alert('Название события: ' + info.event.title+';');
+        alert('Так же при клике можно вывести модальное окно c данными события');
+      }
     });
   
     calendar.render();
