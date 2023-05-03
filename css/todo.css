@@ -27,7 +27,9 @@ body {
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0, 0.1), 0 5px 25px rgba(0,0,0, 0.2);
   border-radius: 15px;
+  display: flex;
   flex-direction: column;
+  gap: 20px;
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
@@ -42,4 +44,13 @@ body {
 
 .calendar-free .fc-view-harness {
   background-color: orange;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.holiday {
+  background-color: red !important;
 }

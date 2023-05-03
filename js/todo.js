@@ -2,9 +2,10 @@ todoMain();
 
 function todoMain() {
   const DEFAULT_OPTION = "Выберите категорию";
+  const holidays = [moment('2023-05-04','YYYY-MM-DD'), moment('2023-04-05','YYYY-MM-DD'), moment('2023-05-07','YYYY-MM-DD')];
   
-  let inputElem,
-    inputElem2,
+  let eventName,
+    eventCategory,
     dateStartInput,
     dateEndInput,
     addButton,
@@ -22,8 +23,8 @@ function todoMain() {
   updateSelectOptions();
   
   function getElements() {
-    inputElem = document.getElementsByTagName("input")[0];
-    inputElem2 = document.getElementsByTagName("input")[1];
+    eventName = document.getElementById("eventName");
+    eventCategory = document.getElementById("eventCategory");
     dateStartInput = document.getElementById("dateStartInput");
     dateEndInput = document.getElementById("dateEndInput");
     addButton = document.getElementById("addBtn");
@@ -40,11 +41,11 @@ function todoMain() {
   function addEntry(event) {
     event.preventDefault();
     
-    let inputValue = inputElem.value;
-    inputElem.value = "";
+    let eventNameValue = eventName.value;
+    eventName.value = "";
     
-    let inputValue2 = inputElem2.value;
-    inputElem2.value = "";
+    let categoryValue = eventCategory.value;
+    eventCategory.value = "";
     
     let dateStartValue = dateStartInput.value;
     dateStartInput.value = "";
@@ -54,20 +55,19 @@ function todoMain() {
 
     let color;
 
-    if (inputValue2 === 'Поле 1') {
+    if (categoryValue === 'Поле 1') {
       color = "#000000";
-    } else if (inputValue2 === 'Поле 2') {
+    } else if (categoryValue === 'Поле 2') {
       color = "#ff0000";
     }
     
     let obj = {
       id: _uuid(),
-      todo: inputValue,
-      category: inputValue2,
+      todo: eventNameValue,
+      category: categoryValue,
       dateStart: dateStartValue,
       dateEnd: dateEndValue,
-      color: color,
-      done: false,
+      color: color
     };
     
     rendowRow(obj);
@@ -77,9 +77,6 @@ function todoMain() {
     save();
     
     updateSelectOptions();
-    
-    
-    
   }
   
   function filterEntries() {
@@ -147,37 +144,27 @@ function todoMain() {
     })
   }
   
-  function rendowRow({ todo: inputValue, category: inputValue2, id, dateStart, dateEnd, color, done }) {
+  function rendowRow({todo: eventNameValue, category: categoryValue, id, dateStart, dateEnd, color}) {
     
     let table = document.getElementById("todoTable");
     
     let trElem = document.createElement("tr");
     table.appendChild(trElem);
     
-    let checkboxElem = document.createElement("input");
-    checkboxElem.type = "checkbox";
-    checkboxElem.addEventListener("click", checkboxClickCallback, false);
-    checkboxElem.dataset.id = id;
-    let tdElem1 = document.createElement("td");
-    tdElem1.appendChild(checkboxElem);
-    trElem.appendChild(tdElem1);
-    
     let dateElem = document.createElement("td");
     let dateObj = new Date(dateStart);
-    let formattedDate = dateObj.toLocaleString("en-GB", {
+    dateElem.innerText = dateObj.toLocaleString("en-GB", {
       month: "long",
       day: "numeric",
       year: "numeric",
     });
-    
-    dateElem.innerText = formattedDate;
     trElem.appendChild(dateElem);
     
     let tdElem2 = document.createElement("td");
-    tdElem2.innerText = inputValue;
+    tdElem2.innerText = eventNameValue;
     trElem.appendChild(tdElem2);
     let tdElem3 = document.createElement("td");
-    tdElem3.innerText = inputValue2;
+    tdElem3.innerText = categoryValue;
     tdElem3.className = "categoryCell";
     trElem.appendChild(tdElem3);
     
@@ -190,17 +177,9 @@ function todoMain() {
     tdElem4.appendChild(spanElem);
     trElem.appendChild(tdElem4);
     
-    checkboxElem.type = "checkbox";
-    checkboxElem.checked = done;
-    if (done) {
-      trElem.classList.add("strike");
-    } else {
-      trElem.classList.remove("strike");
-    }
-    
     addEvent({
       id: id,
-      title: inputValue,
+      title: eventNameValue,
       start: new Date(dateStart),
       end: new Date(dateEnd),
       color: color
@@ -211,21 +190,12 @@ function todoMain() {
       updateSelectOptions();
       
       for (let i = 0; i < todoList.length; i++) {
-        if (todoList[i].id == this.dataset.id)
+        if (todoList[i].id === this.dataset.id)
           todoList.splice(i, 1);
       }
       save();
   
       calendar.getEventById(this.dataset.id).remove();
-    }
-    
-    function checkboxClickCallback() {
-      trElem.classList.toggle("strike");
-      for (let i = 0; i < todoList.length; i++) {
-        if (todoList[i].id == this.dataset.id)
-          todoList[i]["done"] = this.checked;
-      }
-      save();
     }
   }
   
@@ -288,27 +258,42 @@ function todoMain() {
       },
       selectable: true,
       selectMirror: true,
-      dateClick: function(info) {
-        calendarForm.style.display="block";
-        formClose.addEventListener('click', function (event) {
-          event.preventDefault();
-          calendarForm.style.display="none";
-        })
-      },
       select: function(info) {
-        calendarForm.style.display="block";
-        dateStartInput.value=new Date(info.startStr).toISOString().slice(0, -8);
-        dateEndInput.value=new Date(info.endStr).toISOString().slice(0, -8);
-        formClose.addEventListener('click', function (event) {
-          event.preventDefault();
-          calendarForm.style.display="none";
-        })
+        for(let i = 0; i < holidays.length; i++) {
+          if (holidays[i]._d.getFullYear()+'-'+(holidays[i]._d.getMonth()+1)+'-'+holidays[i]._d.getDate() === info.start.getFullYear()+'-'+(info.start.getMonth()+1)+'-'+info.start.getDate()) {
+            alert('Не рабочий день');
+            return;
+          }
+          calendarForm.style.display = "flex";
+          dateStartInput.value = new Date(info.startStr).toISOString().slice(0, -8);
+          dateEndInput.value = new Date(info.endStr).toISOString().slice(0, -8);
+          formClose.addEventListener('click', function (event) {
+            event.preventDefault();
+            calendarForm.style.display="none";
+          })
+        }
       },
+      timeZone: 'UTC',
       events: [],
       locale: 'ru',
       eventClick: function(info) {
         alert('Название события: ' + info.event.title+';');
         alert('Так же при клике можно вывести модальное окно c данными события');
+      },
+      datesSet: function (view) {
+        let holidayMoment;
+        for(let i = 0; i < holidays.length; i++) {
+          holidayMoment = holidays[i];
+          if (view.view.type === 'timeGridDay') {
+            if (holidayMoment._d.getFullYear()+'-'+(holidayMoment._d.getMonth()+1)+'-'+holidayMoment._d.getDate() === view.start.getFullYear()+'-'+(view.start.getMonth()+1)+'-'+view.start.getDate()) {
+              $("td.fc-timegrid-slot-lane").addClass('holiday');
+            } else {
+              $("td.fc-timegrid-slot-lane").removeClass('holiday');
+            }
+          } else {
+            $("td[data-date=" + holidayMoment.format('YYYY-MM-DD') + "]").addClass('holiday');
+          }
+        }
       }
     });
   
