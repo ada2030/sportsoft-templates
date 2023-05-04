@@ -15,16 +15,30 @@
 <body>
 <form class="form" id="form" style="display: none">
     <div class="form__group">
-        <label for="eventName">Название события</label>
-        <input type="text" placeholder="Ведите событие" id="eventName">
+        <label for="placeName">Место</label>
+        <input type="text" placeholder="Выберите место" id="placeName" list="placeList">
     </div>
     <div class="form__group">
-        <label for="eventCategory">Название категории</label>
-        <input type="text" placeholder="Ведите категорию" id="eventCategory" list="categoryList">
+        <label for="fieldName">Поле</label>
+        <input type="text" placeholder="Выберите поле" id="fieldName" list="categoryList">
+    </div>
+    <div class="form__group">
+        <label for="bookType">Тип бронирования</label>
+        <input type="text" placeholder="Выберите тип бронирования" id="bookType" list="typeList">
     </div>
     <datalist id="categoryList">
         <option value="Поле 1"></option>
         <option value="Поле 2"></option>
+        <option value="1/2 Поля 1"></option>
+        <option value="1/2 Поля 2"></option>
+    </datalist>
+    <datalist id="placeList">
+        <option value="Московское шоссе, 122"></option>
+        <option value="Антоново-Овсеенко, 85А"></option>
+    </datalist>
+    <datalist id="typeList">
+        <option value="Чемпионат"></option>
+        <option value="Аренда"></option>
     </datalist>
     <div class="form__group">
         <label for="dateStartInput">Дата и время начала</label>
@@ -34,18 +48,21 @@
         <label for="dateEndInput">Дата и время конца</label>
         <input type="datetime-local" id="dateEndInput">
     </div>
-    <button id="addBtn">Добавить</button>
+    <div class="form__group">
+        <label for="amountPaid">Сумма к оплате</label>
+        <input type="text" id="amountPaid" disabled>
+    </div>
+    <button id="addBtn">Забронировать</button>
     <a class="form__close js-close" id="form-close" href="#">
         <img height="30" width="30" src="data:image/png;base64,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" alt="">
     </a>
 </form>
-<table id="todoTable">
+<table id="bookTable">
     <tr>
         <td>Дата Начала</td>
-        <td>Событие</td>
-        <td>
-            <select id="categoryFilter"></select>
-        </td>
+        <td>Клиент</td>
+        <td>Место</td>
+        <td>Поле</td>
         <td></td>
     </tr>
 </table>
@@ -53,6 +70,6 @@
 <div id='calendar'></div>
 <br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="js/todo.js"></script>
+<script src="js/book.js"></script>
 </body>
 </html>
