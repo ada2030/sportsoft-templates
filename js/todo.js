@@ -2,7 +2,7 @@ todoMain();
 
 function todoMain() {
   const DEFAULT_OPTION = "Выберите категорию";
-  const holidays = [moment('2023-05-04','YYYY-MM-DD'), moment('2023-04-05','YYYY-MM-DD'), moment('2023-05-07','YYYY-MM-DD')];
+  const holidays = [moment('2023-05-04','YYYY-MM-DD'), moment('2023-04-05','YYYY-MM-DD'), moment('2023-05-07','YYYY-MM-DD'), moment('2023-05-11','YYYY-MM-DD')];
   
   let eventName,
     eventCategory,
@@ -287,10 +287,12 @@ function todoMain() {
           if (view.view.type === 'timeGridDay') {
             if (holidayMoment._d.getFullYear()+'-'+(holidayMoment._d.getMonth()+1)+'-'+holidayMoment._d.getDate() === view.start.getFullYear()+'-'+(view.start.getMonth()+1)+'-'+view.start.getDate()) {
               $("td.fc-timegrid-slot-lane").addClass('holiday');
+              return;
             } else {
               $("td.fc-timegrid-slot-lane").removeClass('holiday');
             }
           } else {
+            $("td.fc-timegrid-slot-lane").removeClass('holiday');
             $("td[data-date=" + holidayMoment.format('YYYY-MM-DD') + "]").addClass('holiday');
           }
         }
